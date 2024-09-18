@@ -15,8 +15,6 @@
           
           <category> 环境搭建 </category>
           
-          <category> 数据库 </category>
-          
       </categories>
       
       
@@ -44,8 +42,6 @@
           
           <category> 工具 </category>
           
-          <category> 虚拟机工具 </category>
-          
       </categories>
       
       
@@ -56,19 +52,6 @@
             <tag> SpringCloud </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>bangumis</title>
-      <link href="/posts/undefined.html"/>
-      <url>/posts/undefined.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
       
     </entry>
     
@@ -87,12 +70,6 @@
           <category> SpringCloud </category>
           
           <category> 开发框架 </category>
-          
-          <category> Java开发框架 </category>
-          
-          <category> MybatisPlus </category>
-          
-          <category> MyBatisPlus </category>
           
       </categories>
       
@@ -121,8 +98,6 @@
           
           <category> 工具 </category>
           
-          <category> 前端工具 </category>
-          
       </categories>
       
       
@@ -148,8 +123,6 @@
           
           <category> 工具 </category>
           
-          <category> Java后端工具 </category>
-          
       </categories>
       
       
@@ -173,22 +146,18 @@
       
       <categories>
           
-          <category> SpringCloud </category>
-          
-          <category> Docker </category>
-          
           <category> 环境搭建 </category>
           
-          <category> Docker </category>
+          <category> SpringCloud </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 环境搭建 </tag>
-            
             <tag> SpringCloud </tag>
+            
+            <tag> 环境搭建 </tag>
             
         </tags>
       
