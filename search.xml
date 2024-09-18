@@ -47,9 +47,9 @@
       
         <tags>
             
-            <tag> 工具 </tag>
-            
             <tag> SpringCloud </tag>
+            
+            <tag> 工具 </tag>
             
         </tags>
       
@@ -146,18 +146,18 @@
       
       <categories>
           
-          <category> 环境搭建 </category>
-          
           <category> SpringCloud </category>
+          
+          <category> 环境搭建 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> SpringCloud </tag>
-            
             <tag> 环境搭建 </tag>
+            
+            <tag> SpringCloud </tag>
             
         </tags>
       
