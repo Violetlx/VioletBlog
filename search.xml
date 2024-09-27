@@ -222,9 +222,9 @@
       
         <tags>
             
-            <tag> 工具 </tag>
-            
             <tag> SpringCloud </tag>
+            
+            <tag> 工具 </tag>
             
         </tags>
       
@@ -242,9 +242,9 @@
       
       <categories>
           
-          <category> 开发框架 </category>
-          
           <category> SpringCloud </category>
+          
+          <category> 开发框架 </category>
           
       </categories>
       
