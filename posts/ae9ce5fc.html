@@ -1,0 +1,1193 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><!-- hexo injector head_begin start --><link href="https://cdn.jsdelivr.net/npm/hexo-widget-tree@0.2.3/css/index.css" rel="stylesheet"><!-- hexo injector head_begin end --><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>IDEA 使用 Git 详解(二) | Violet博客屋</title><meta name="keywords" content="IDEA"><meta name="author" content="violet"><meta name="copyright" content="violet"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="IDEA 使用 Git 详解(二)"><meta name="application-name" content="IDEA 使用 Git 详解(二)"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="IDEA 使用 Git 详解(二)"><meta property="og:url" content="http://example.com/posts/ae9ce5fc.html"><meta property="og:site_name" content="Violet博客屋"><meta property="og:description" content="IDEA 使用 Git 详解(二)"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://boosterminiclass.com/wp-content/uploads/2023/07/intellij_idea_git_2.png"><meta property="article:author" content="violet"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://boosterminiclass.com/wp-content/uploads/2023/07/intellij_idea_git_2.png"><meta name="description" content="IDEA 使用 Git 详解(二)"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/posts/ae9ce5fc"><link rel="preconnect" href="//cdn.cbd.int"><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="xxx"><meta name="baidu-site-verification" content="code-xxx"><meta name="msvalidate.01" content="xxx"><link rel="manifest" href="/manifest.json"><meta name="msapplication-TileColor" content="var(--anzhiyu-main)"><link rel="mask-icon" href="/img/siteicon/apple-icon-180.png" color="#5bbad5"><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/apple-icon-180.png"><link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/siteicon/apple-icon-180.png"><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/32.png"><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/16.png"><link rel="bookmark" href="/img/siteicon/apple-icon-180.png"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2732-2048.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1668-2388.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2388-1668.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1536-2048.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2048-1536.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1668-2224.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2224-1668.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1620-2160.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2160-1620.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1290-2796.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2796-1290.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1179-2556.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2556-1179.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1284-2778.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2778-1284.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1170-2532.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2532-1170.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1125-2436.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2436-1125.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1242-2688.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2688-1242.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-828-1792.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1792-828.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1242-2208.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2208-1242.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-750-1334.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1334-750.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-640-1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1136-640.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: undefined,
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":1500,"languages":{"author":"作者: violet","link":"链接: ","source":"来源: Violet博客屋","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Violet博客屋',
+  title: 'IDEA 使用 Git 详解(二)',
+  postAI: '',
+  pageFillDescription: 'Git, 为 Git 远程设置密码, 设置 Git 存储库, 将文件添加到 Git 并跟踪更改, 与远程 Git 存储库同步（获取、拉取、更新）, 提交更改并将其推送到 Git 存储库, , 比较文件和文件夹版本, 调查 Git 存储库中的更改设置设置版本控制所需插件默认捆绑并启用为远程设置密码每次与远程存储库交互时例如在或操作期间都需要授权你可以将配置为记住你的密码这样你就不必再每次需要授权时指定你的凭据了配置密码策略在设置对话框中选择外观和行为系统设置密码在左边选择你希望如何处理远程存储仓库的密码在本机钥匙串中选择此项可使用本机钥匙串来存储你的密码此设置仅适用于和在中选择此选项可使用密码管理器来存储您的密码当您使用密码管理器时将使用主密码来访问存储个人密码的文件一旦记住您的密码除非您需要访问密码数据库否则它不会询问您的密码在字段中输入将用于访问文件的密码您可以在数据库字段中更改文件的默认位置要导入文件请单击并从下拉菜单中选择导入或者单击并指定包含密码的本地文件的路径如果您想从数据库中删除现有密码请选择清除重新启动后不保存忘记密码如果您希望在关闭后重置密码请选择此选项设置存储库当您克隆现有的存储库或将现有项目置于版本控制之下时会自动检测您的计算机上是否安装了如果找不到可执行文件则建议下载它支持来自的该子系统在版本中提供如果上未安装会在中搜索并从那里使用它此外对于使用路径打开的项目会自动从切换到如果您需要手动配置以从使用请转到版本控制设置的页面单击可执行文件路径字段中的浏览图标然后通过路径选择例如从远程主机检出项目允许你签出用术语来说克隆现有存储库并根据你下载的数据创建新项目要开始克隆存储库请执行以下操作之一如果版本控制集成已启用请转至克隆如果尚未启用版本控制集成请转至从版本控制获取或者转到文件新来自版本控制的项目如果当前没有打开的项目请单击欢迎屏幕上的从获取在从版本控制获取对话框中指定要克隆的远程存储库的或选择左侧的托管服务之一如果您已经登录到所选的托管服务完成后将建议您可以克隆的可用存储库列表单击克隆如果要基于已克隆的源创建项目请在确认对话框中单击是根映射将自动设置为项目根目录如果您的项目包含子模块它们也将被克隆并自动注册为项目根在信任和开放项目中在项目安全对话框中选择您想要打开项目的方式信任项目或在安全模式下预览当您第一次导入或克隆项目时会对其进行分析如果检测到多个配置例如和它会提示您选择要使用的配置如果您要导入的项目使用构建工具例如或我们建议您选择构建工具配置选择必要的配置并单击确定根据您的选择预先配置项目例如如果您选择将执行其构建脚本加载依赖项等将现有项目置于版本控制之下将整个项目与单个存储库关联打开您想要放入下的项目按打开操作弹出窗口并选择启用版本控制集成或者转到启用版本控制集成选择作为版本控制系统然后单击确定然后整个项目将与单个目录关联因此无需将每个文件单独添加到目录启用集成后会询问您是否要通过共享项目设置文件您可以选择始终添加以与使用的其他存储库用户同步项目设置如果弹出窗口中没有可用的启用版本控制集成选项则表示已为该项目启用了版本控制将项目内的不同目录与不同的存储库关联打开您想要放入下的项目前往创建存储库在打开的对话框中指定将在其中创建新存储库的目录不支持外部路径因此如果您选择项目根目录之外的目录请确保要创建存储库的文件夹也包含项目根目录如果您要在项目结构内创建多个存储库请对每个目录重复前面的步骤为项目初始化存储库后您需要将项目文件添加到存储库添加文件到本地存储库在提交工具窗口中展开未版本化文件节点选择要添加到或整个更改列表的文件然后按或从上下文菜单中选择添加到您还可以从项目工具窗口将文件添加到本地存储库选择要添加的文件然后按或选择从上下文菜单添加在项目中启用集成时建议在下添加每个新创建的文件即使它是从外部添加的您可以在版本控制中更改此行为设置的确认页面如果您希望某些文件始终保持未版本化则可以忽略它们如果您尝试添加列表中的文件将建议强制添加它在确认对话框中单击取消只会取消强制添加忽略的文件所有其他文件都将添加到存储库从版本控制中排除文件忽略有时您可能需要保留某些文件未版本化这些可以是管理文件实用程序工件备份副本等您可以通过忽略文件不会建议将它们添加到并将它们突出显示为忽略您只能忽略未版本化的文件即您在未版本化文件更改列表中看到的文件如果文件已添加到但未提交您可以在更改视图中右键单击该文件并选择回滚允许您在两种配置文件中列出忽略的文件模式排除文件此文件中列出的模式仅适用于存储库的本地副本当您初始化或签出存储库时会自动创建此文件根目录及其子目录中的一个或多个文件这些文件被签入存储库以便整个团队都可以使用其中的忽略模式因此它是存储被忽略的文件模式的最常见位置如果根目录下没有文件可以在工具窗口任意位置右键选择文件然后在新建文件对话框中键入要在资源管理器中创建文件请创建一个名为的文件会自动将其重命名为将文件添加到或决定要使用哪种类型的配置文件来忽略文件如果有疑问请使用在更改视图或项目工具窗口中找到要忽略的未版本控制的文件或文件夹这些视图中的文件颜色可帮助您识别文件的状态右键单击所选内容并选择添加到或添加到这些视图中的文件颜色可帮助您识别文件的状态如果需要按某种模式或类型排除文件可以直接编辑或文件请参阅模式格式如果您希望忽略的文件也显示在更改视图中请单击工具栏上的并选择显示忽略的文件添加远程存储库如果您基于本地源创建了存储库则需要添加远程存储库以便能够在项目上进行协作并消除在本地存储整个代码库的风险当您需要共享您的工作并从中提取数据以将其他贡献者所做的更改集成到本地存储库版本时您可以将更改推送到远程存储库如果您已克隆远程存储库例如从则远程会自动配置并且当您想要与其同步时不必指定它为您克隆的远程服务器提供的默认名称是有关共享不同项目格式的项目设置的更多信息请参阅通过共享项目设置定义一个远程在任何托管上创建一个空存储库例如或您可以在上创建存储库而无需离开请参阅在上共享项目当您准备好通过选择推送提交时调用推送对话框从主菜单按下或按如果您到目前为止尚未添加任何遥控器则会显示定义远程链接而不是遥控器名称单击它以添加遥控器在打开的对话框中指定远程名称和托管它的然后单击确定添加第二个遥控器在某些情况下您还需要添加第二个远程存储库例如如果您克隆了一个没有写访问权限的存储库并且要将更改推送到您自己的原始项目分支这可能会很有用另一个常见的情况是您克隆了自己的存储库这是其他人的项目分支您需要与原始项目同步并从中获取更改转到管理遥控器远程对话框将打开单击工具栏上的添加按钮或按在打开的对话框中指定远程名称和然后单击确定要编辑远程例如更改已克隆的原始项目的名称请右键单击日志工具窗口的分支窗格中的远程分支然后从上下文菜单中选择编辑远程您还可以通过单击遥控器的名称从推送对话框中编辑遥控器要删除不再有效的存储库请在日志工具窗口的分支窗格中右键单击它然后从上下文菜单中选择删除远程将文件添加到并跟踪更改将文件添加到打开提交工具窗口通过按或从上下文菜单中选择添加到将无版本控制文件更改列表中的任何文件置于版本控制之下您可以添加整个更改列表或选择单独的文件如果您已为项目启用集成建议将每个新创建的文件添加到版本控制下您可以在版本控制设置对话框中更改此行为确认如果您希望某些文件始终保持未版本化您可以将配置为忽略它们您还可以从项目工具窗口将文件添加到本地存储库选择要添加的文件然后按或选择从上下文菜单添加检查项目文件状态允许您检查本地工作副本与项目的存储库版本相比的状态它可以让您查看哪些文件已被修改哪些新文件已添加到以及哪些文件未被跟踪打开提交工具窗口更改更改列表显示自上次与远程存储库同步以来已修改的所有文件以蓝色突出显示以及已添加到但尚未提交的所有新文件以绿色突出显示更改列表显示已添加到项目中但未跟踪的所有文件如果您希望忽略的文件也显示在更改视图中请单击工具栏上的并选择显示忽略的文件在编辑器中跟踪文件的更改您还可以在编辑器中修改文件时跟踪文件的更改所有更改均通过更改标记突出显示这些标记出现在已修改行旁边的装订线中并显示自上次与存储库同步以来引入的更改类型当您将更改提交到存储库时更改标记就会消失您对文本所做的更改是用颜色编码的已添加行线路改变了行已删除您可以在编辑器上自定义线路状态的默认颜色配色方案设置的页面要禁用装订线中的标记请取消选择版本控制装订线中的突出显示装订线中已修改的行选项设置的确认页面您可以使用将鼠标悬停在更改标记上然后单击它时出现的工具栏来管理更改工具栏与一个框架一起显示该框架显示修改行的先前内容您可以通过单击回滚更改并通过单击探索当前行的当前版本和存储库版本之间的差异要突出显示已更改的片段请单击您可以复制此弹出窗口内容的任何部分并将其粘贴到编辑器中而不是恢复整个文件从存储库中删除文件如果您删除受版本控制的文件它仍然存在于存储库中直到您提交更改为止已删除的文件将放置在活动更改列表中并以灰色突出显示在项目工具窗口中选择一个文件然后按或从上下文菜单中选择删除在打开的对话框中您可以选择是要删除该文件而不搜索用途还是通过选中安全删除选项来执行安全删除以确保删除未使用的文件如果发现任何用法将弹出检测到用法对话框列出它们您可以在删除该文件之前查看这些用法并删除对此文件的引用将更改提交到存储库与远程存储库同步获取拉取更新在通过将更改推送到上游来共享工作结果之前您需要与远程存储库同步以确保项目的本地副本是最新的您可以通过以下方式之一执行此操作获取更改拉取更改或更新项目分支弹出窗口指示分支是否有尚未获取的传入提交获取更改当您从上游获取更改时自上次与远程存储库同步以来提交的所有新数据都会下载到本地副本中这些新数据不会集成到您的本地文件中并且更改不会应用于您的代码获取的更改存储为远程分支这使您有机会在将它们与文件合并之前查看它们由于不会影响你本地的开发环境这是获取远程存储库所有更改更新的安全方法有两种方法可以从上游获取更改选择在主菜单中获取或者打开分支弹出窗口并单击右上角观看此视频可更好地了解中如何执行获取操作更新分支如果您需要将特定分支与其远程跟踪分支同步请使用更新这是获取并随后将更改应用到所选分支的便捷快捷方式在分支弹出窗口或版本控制工具窗口的分支窗格中选择一个分支并从上下文菜单中选择更新将从远程分支中提取更改并将它们变基或合并到本地分支具体取决于在设置中选择的更新方法版本控制吉特拉动变更如果您需要从另一个分支而不是其远程跟踪分支获取对当前分支的更改请使用当您拉取时您不仅下载新数据还将其集成到项目的本地工作副本中转到拉拉取更改对话框打开如果您有一个多存储库项目则会出现一个附加下拉列表供您选择存储库如果您为项目定义了多个遥控器请从列表中选择一个遥控器默认情况下为选择要将更改拉取到当前签出的分支的分支默认情况下选择当前本地分支跟踪的远程分支如果您指定不同的分支将记住您的选择并在将来默认显示该分支如果您需要使用选项拉取请单击修改选项并从以下选项中进行选择从远程分支获取更改后会将本地未推送的更改重新设置为已获取的更改只有可以快进时合并才会被解决在所有情况下都会创建合并提交即使可以将合并解析为快进将在当前分支之上创建包含所有拉取更改的单个提交将执行合并但不会创建合并提交以便您可以在提交之前检查合并的结果有关选项的更多信息请参阅单击拉动更新您的项目如果您有多个项目根目录或者希望每次与远程存储库同步时从所有分支获取更改您可能会发现更新项目是更方便的选择当您执行更新操作时会从所有项目根和分支中获取更改并将跟踪的远程分支合并到本地工作副本中相当于如果您的项目包含子模块并且它们位于分支上它们也会自动更新如果子模块处于分离的状态将调用这将检查根存储库中引用的提交这意味着仅当根存储库中的子模块引用发生更改或添加新的子模块时才会执行更新前往更新项目或按更新项目对话框打开选择更新类型此策略将应用于版本控制下的所有根将传入的更改合并到当前分支选择此选项可在更新期间执行合并这相当于运行然后或在传入更改之上对当前分支进行变基选择此选项可在更新期间执行变基这相当于运行然后或者所有本地提交都将放在更新的上游头之上如果您选择以后不显示更新项目对话框然后想要稍后修改默认更新策略请转到版本控制更新项目对话框设置的确认页面在调用这些命令时显示选项对话框下选择更新并在下次执行更新时修改更新策略更新操作完成后工具窗口中将添加更新信息选项卡它列出了自上次与远程同步以来所做的所有提交并允许您以与日志选项卡中相同的方式查看更改如果您想查看自上次更新以来修改的所有文件的完整列表请将插入符号放在提交列表中的任意位置然后按您可以禁用分组以查看平面列表单击更改的文件窗格中的工具栏提交更改并将其推送到存储库配置提交选项设置版本控制犯罪提交工具窗口犯罪提交和推送推将新文件添加到存储库或修改已在版本控制下的文件并且您对它们的当前状态感到满意后您可以共享您的工作结果这涉及到在本地提交它们以将存储库的快照记录到项目历史记录中然后将它们推送到远程存储库以便其他人可以使用它们设置您的用户名需要知道您的用户名才能将提交与身份关联起来如果您尚未设置用户名将在您首次尝试提交更改时提示您指定用户名打开终端并执行以下命令之一要为计算机上的每个存储库设置名称请使用要为单个存储库设置名称请使用在本地提交更改打开位于左侧的垂直提交工具窗口当您的更改准备好提交时选择相应的文件或整个更改列表如果按将选择整个活动更改列表您还可以选择节点下的文件将一步暂存并提交这些文件如果要将本地更改附加到最新提交而不是创建单独的提交请选择修改选项输入提交消息您可以单击以从最近提交消息的列表中进行选择您还可以稍后在推送提交之前编辑提交消息您可以在版本控制上自定义提交消息规则设置的提交页面还有一个快速修复和重新格式化操作可以换行长行或重新格式化消息您还可以定义将用作默认提交消息的提交模板指定要在文件中使用的样板文本并在终端中执行以下命令将其添加到配置中如果您需要执行提交检查提交后将文件上传到服务器或使用高级选项提交请单击右下角的可以使用以下选项作者如果您要提交其他人所做的更改您可以指定这些更改的作者签署提交选择是否要签署提交以证明您要签入的更改是由您做出的或者您对所提交的代码负责启用此选项后将以下行自动添加到提交消息的末尾签署人用户名在提交检查区域中选择您希望在将所选文件提交到本地存储库时执行的操作可以使用以下选项重新格式化代码根据项目代码样式设置执行代码格式化重新排列代码根据偏好的排列规则重新排列您的代码优化导入删除多余的导入语句分析代码在提交修改的文件时分析它们单击选择配置文件以选择将运行检查的检查配置文件检查过滤器名称查看与指定过滤器匹配的项单击配置以选择现有的过滤器或打开设置页面并定义要应用的新过滤器清理批量应用代码清理检查中的快速修复单击选择配置文件以选择将运行检查的配置文件运行测试运行测试作为提交检查单击运行测试附近的选择配置然后选择要运行的配置更新版权根据所选的版权配置文件范围组合添加或更新版权声明在提交后区域中您可以选择用于将提交的文件上传到本地或远程主机已安装的磁盘或目录的服务器访问配置或服务器组有关更多信息请参阅部署您的应用程序可以使用以下选项运行工具选择您希望在提交所选更改后启动的外部工具您可以从列表中选择一个工具或者单击浏览按钮并在打开的外部工具对话框中配置外部工具将文件上传到选择服务器访问配置或服务器组用于将提交的文件上传到本地或远程主机已安装的磁盘或目录要禁止上传请选择要将服务器配置添加到列表中请单击并填写打开的添加服务器对话框中的必填字段仅当启用连接插件时该列表才可用始终使用选定的服务器或服务器组始终将文件上传到选定的服务器或服务器组仅当启用连接插件时该复选框才可用准备就绪后单击提交或提交并推送在提交后立即将更改推送到远程存储库您将能够在将当前提交以及所有其他提交推送到远程之前查看它们提交文件的一部分有时当您进行与特定任务相关的更改时您还会应用影响同一文件的其他不相关的代码修改将所有此类更改包含到一次提交中可能不是一个好的选择因为审查恢复挑选它们等会更加困难允许您通过以下方式之一单独提交此类更改在提交更改对话框中选择要包含在提交中的修改后的代码块和行并将其他更改保留为待处理状态以便稍后可以提交它们当您编辑代码时将不同的代码块即时放入不同的更改列表中然后分别提交这些更改列表您还可以创建一个新的更改列表并使其处于活动状态然后您之后所做的所有更改都将落入该更改列表中而您之前所做的任何修改都将保留在原处选择要提交的块和特定行打开提交工具窗口要显示所选文件的存储库版本和本地版本之间的差异请在提交工具窗口中单击工具栏上的或按选中要提交的每个已修改或新添加的代码块旁边的复选框并保留其他更改未选中您还可以从已修改块的上下文菜单中选择移动到另一个更改列表以在可以单独提交的不同更改列表之间拆分更改要为此操作分配自定义快捷方式请在设置的键盘映射页面上的版本控制系统下查找将行移至另一个更改列表操作如果您只想提交块中的特定行请右键单击要包含的行然后选择拆分块和将所选行包含到提交中或者将鼠标悬停在装订线上然后选择或清除要包含在提交中或从中排除的行旁边的复选框单击提交未选定的更改将保留在当前更改列表中以便您可以单独提交它们将更改放入不同的更改列表中当您在编辑器中对文件进行更改时请单击装订线中相应的更改标记如果装订线中没有更改标记请确保在编辑器装订线中启用突出显示装订线中修改的行选项设置的常规页面在出现的工具栏中选择已修改代码块的目标变更列表或创建新的变更列表单独提交每个变更列表使用暂存区提交更改如果您更习惯于提交更改的暂存概念而不是使用自动暂存修改文件的更改列表请按打开设置并选择版本控制然后选择启用暂存区域复选框提交工具窗口现在如下所示使用暂存区域可以让您轻松地分别提交对同一文件的更改包括重叠更改并查看哪些更改已经暂存而无需从编辑器切换焦点当您从使用更改列表切换到暂存区域时所有现有更改列表都会保存您可以在两种模式之间切换而不会丢失所做的更改提交的阶段更改执行以下操作之一要暂存整个文件请在提交工具窗口中选择该文件并单击其右侧的或按要暂存文件中的特定块请在编辑器中单击已修改块旁边的装订线中的更改标记然后单击暂存暂存的更改包括从外部暂存的更改在编辑器中用边框形状的更改标记进行标记要暂存粒度更改例如单行而不是代码块甚至是对单行的多个更改之一请在提交工具窗口中选择包含更改的文件然后从上下文菜单中选择比较暂存版本和本地版本这将打开一个三向差异查看器其中左窗格显示存储库版本右窗格显示本地版本中央窗格是一个功能齐全的编辑器您可以在其中进行想要暂存的更改准备就绪后按照本地提交更改中所述提交更改将更改推送到远程存储库在推送更改之前请与远程同步并确保存储库的本地副本是最新的以避免冲突允许您将更改从任何分支上传到其跟踪分支或任何其他远程分支执行以下操作之一要从当前分支推送更改请按或选择从主菜单推送要从任何具有远程分支的本地分支推送更改请在分支弹出窗口中选择该分支然后从操作列表中选择推送推送提交对话框将打开显示所有存储库对于多存储库项目并列出自上次推送以来在每个存储库的当前分支中进行的所有提交如果您的项目使用多个非同步控制的存储库则默认情况下仅选择当前存储库有关启用同步存储库控制的更多信息请参阅版本控制设置您可以按所选提交来显示额外信息例如提交作者时间哈希值和提交消息如果存储库中没有遥控器则会显示定义远程链接单击此链接并在打开的对话框中指定远程名称和它将被保存您可以稍后通过进行编辑管理远程有关更多信息请参阅添加远程存储库如果你想修改要推送的目标分支可以点击分支名称该标签会变成一个文本字段您可以在其中键入现有分支名称或创建新分支您还可以单击右下角的编辑所有目标链接来同时编辑所有分支名称请注意您无法更改本地分支将推送每个选定存储库的当前分支您还可以通过按所选元素的或切换到编辑模式如果您已经进行了一些提交但还不想推送到远程分支请在工具窗口的日志选项卡中选择要推送的最后一个提交然后从列表中选择将所有内容推送到此处选项行动推送提交对话框将打开显示直到所选提交哈希的所有提交如果您想在推送更改之前预览更改请选择所需的提交右侧窗格显示所选提交中包含的更改您可以使用工具栏按钮检查提交详细信息如果提交的作者与当前用户不同则该提交将标有星号如果您选择整个存储库所有提交的所有文件将在右窗格中列出如果在多次提交中修改了同一文件则当您选择这些提交或整个存储库时该文件只会列出一次并且如果您为此文件调用差异查看器则所有更改都将被压缩在一起准备好后单击推送按钮然后从下拉菜单中选择要执行的操作推送或强制推送相当于仅当当前分支未在受保护的分支字段中列出时请参阅版本控制设置这些选择选项才可用否则您只能执行该操作如果推送被拒绝请更新您的工作副本如果由于工作副本已过时而拒绝推送将显示推送被拒绝对话框前提是未选择设置对话框的设置页面中的如果当前分支的推送被拒绝则自动更新选项请执行下列操作如果您的项目使用多个存储库请指定要更新其中的哪个如果您想要更新所有存储库无论推送是否被拒绝请选择更新所有存储库选项如果清除此选项则仅更新受影响的存储库如果您希望在下次使用您在此对话框中选择的更新方法拒绝推送时静默应用更新过程请选择记住更新方法选择并在将来静默更新选项离开此对话框后设置对话框的设置页面中的如果当前分支的推送被拒绝则自动更新复选框将被选中并且应用的更新方法将成为默认方法要更改更新策略请取消选择此选项以在下次当前分支的推送被拒绝时调用推送被拒绝对话框应用不同的更新过程然后再次选择记住更新方法选择选项通过分别单击变基或合并按钮来选择更新方法变基或合并什么时候需要使用强制推送当您运行时如果远程存储库中有您丢失的更改并且您将用存储库的本地副本覆盖将拒绝完成操作通常您需要执行拉取以与远程同步然后再使用更改进行更新该命令禁用此检查并允许您覆盖远程存储库从而擦除其历史记录并导致数据丢失在幕后当您选择强制推送时会执行该操作这是一个更安全的选项可帮助您确保不会覆盖其他人的提交有关推送选项的更多详细信息请参阅您可能仍需要执行的一种可能情况是您对推送的分支进行变基然后想要将其推送到远程服务器在这种情况下当您尝试推送时将拒绝您的更改因为远程引用不是本地引用的祖先如果您在这种情况下执行拉取您最终将得到分支的两个副本然后需要合并它们比较文件和文件夹版本允许您检查文件文件夹的两个修订版之间或其当前本地副本与存储库版本之间的差异差异显示在差异查看器中有关在差异查看器中过滤导航和应用更改的更多信息请参阅比较文件文件夹和文本源将修改后的文件与其存储库版本进行比较打开提交工具窗口在更改列表中找到所需的文件并执行以下操作之一右键单击该文件并选择显示差异选择文件并按双击该文件将打开差异视图其中突出显示对文件的更改右窗格包含文件的修改版本您可以在差异视图中对其进行编辑左窗格包含文件的初始版本它是只读的您可以单击恢复来撤消更改将文件或文件夹的当前版本与同一分支中的版本进行比较在项目工具窗口中选择一个文件或文件夹然后选择从上下文菜单中与修订版进行比较从打开的对话框中选择要与当前文件或文件夹版本进行比较的修订版本将文件或文件夹的当前版本与另一个分支进行比较在项目工具窗口中选择一个文件或文件夹然后选择从上下文菜单中与分支进行比较从打开的对话框中选择要与当前文件或文件夹版本进行比较的分支调查存储库中的更改在中您可以追溯项目中的所有更改这可以帮助您找到任何更改的作者查看文件版本或提交之间的差异并在必要时安全地回滚和撤消更改回顾项目历史您可以查看对与指定过滤器匹配的项目源所做的所有更改要查看项目历史记录请打开工具窗口的日志选项卡它显示了提交给所有分支和远程存储库的所有更改在多存储库项目中左侧的彩色条纹指示所选提交属于哪个根每个根都标有自己的颜色将鼠标悬停在彩色条纹上可调用显示根路径的提示浏览和搜索项目历史记录通过输入完整的提交名称或消息或其片段修订号或正则表达式来搜索提交列表按分支或最喜欢的分支用户日期和文件夹或多根项目的根和文件夹过滤提交单击工具栏上的转到哈希分支标签图标或按并指定提交哈希标签或要跳转到的分支的名称您将被带到该分支中的最新提交单击箭头跳转到长分支中的下一个提交按和键跳转到父子提交如果您在工具窗口的日志选项卡中混合了对不同存储库和多个分支的提交这尤其有用按将焦点切换到搜索字段为了避免来回设置过滤器请单击工具栏上的来打开与您的过滤器匹配的新选项卡要自定义日期格式请转至设置外观和行为系统设置日期格式有关工具窗口的日志选项卡的更多信息请参阅日志选项卡查看特定修订版的项目快照允许您在选定的修订版本中查看项目的状态打开工具窗口并切换到日志选项卡选择一个提交然后从上下文菜单中选择显示修订版本的存储库将打开存储库工具窗口其中包含所选版本的项目快照查看两次提交之间的差异允许您检查两次提交之间修改了哪些文件而不必浏览两次提交之间的更改在工具窗口的日志选项卡中选择任意两个提交然后从上下文菜单中选择比较版本将打开更改工具窗口其中包含所选提交之间修改的文件列表您可以通过单击或按来查看任何文件的差异查看文件历史记录您可以查看对特定文件所做的所有更改并查找每个版本中具体修改的内容在任何视图项目工具窗口编辑器更改视图等中选择必要的文件选择从主菜单或选择的上下文菜单显示历史记录历史记录选项卡已添加到工具窗口显示所选文件的历史记录并允许您查看和比较其修订版本要确定特定修订版中引入了哪些更改请在列表中选择它在面板的右侧立即显示差异要在专用差异查看器中查看整个文件的差异请在列表中选择它然后按或单击工具栏上的按钮差异查看器将打开显示此版本中的更改查看本地和提交的文件版本之间的差异您可以检查提交的文件修订与其本地版本有何不同打开工具窗口并切换到日志选项卡选择您感兴趣的提交然后在右侧窗格中选择文件单击工具栏上的按钮查看更改的合并方式允许您查看如何将更改从一个分支合并到另一个分支以及在合并期间如何解决冲突如果有在工具窗口的日志选项卡中选择您感兴趣的合并提交如果在合并过程中未检测到并解决任何冲突将在更改的文件窗格中显示相应的消息并建议检查源自父级的更改从节点之一选择所需的文件然后单击工具栏上的显示差异图标或按差异查看器将显示两个面板的差异允许您将当前版本与选定的父版本进行比较如果合并期间发生冲突更改的文件窗格将显示合并有冲突的文件列表选择所需的文件然后单击工具栏上的显示差异图标或按差异查看器将显示一个三面板差异允许您将当前版本与其每个父版本进行比较并查看冲突是如何解决的找到代码作者使用进行注释您可以使用注释对应于找出谁对文件引入了哪些更改带注释的视图显示了每行代码的详细信息当前版本中修改的行的注释用粗体和星号标记默认情况下不同的提交以不同的颜色突出显示请参阅配置注释中显示的信息量从注释视图您可以跳转到工具窗口的日志选项卡中的相应提交单击注释或将鼠标悬停在其上然后单击弹出窗口中包含详细信息的提交哈希行的差异将鼠标悬停在注释上将突出显示该行以及相应提交的更改上的相应提交使用上下文菜单选项如果启用了问题导航则错误跟踪系统中的相关问题将鼠标悬停在注释上然后单击问题链接如果提交消息中包含该链接启用注释右键单击编辑器或差异查看器中的装订线然后从上下文菜单中选择使用进行注释您可以为注释命令分配自定义快捷方式转到设置的键盘映射页面然后查找版本控制系统版本控制系统注释要关闭注释请右键单击编辑器或差异查看器中的装订线然后从上下文菜单中选择关闭注释配置注释中显示的信息量您可以选择要在注释视图中查看的信息量右键单击注释装订线选择查看并选择要查看的信息类型包括此更改源自的修订版日期不同格式的作者姓名以及提交号您还可以在颜色下设置突出显示配置注释选项右键单击注释装订线并从上下文菜单中选择选项忽略空格空格将被忽略这意味着注释将指向先前有意义的提交检测文件内的移动当提交在同一文件中移动或复制行时此类更改将被忽略这意味着注释将指向先前有意义的提交检测跨文件的移动当提交移动或复制在同一提交中修改的其他文件中的行时此类更改将被忽略这意味着注释将指向先前有意义的提交显示提交时间戳如果您希望在注释视图中显示提交时间戳而不是创作更改的时间请选择此选项自定义日期格式按打开设置然后选择外观和行为系统设置日期格式单击注释旁边的日期时间模式字段并指定要用于注释的日期格式请参阅模式参考在编辑器中显示更改的作者您可以将编辑器配置为在嵌入提示中显示对元素方法或类的最后更改的作者要打开它们按打开设置然后选择编辑器镶嵌提示代码愿景选择代码作者选项选择显示作者姓名的位置在线顶部默认在右侧启用此选项后您可以单击编辑器中的作者姓名提示来打开带注释的视图隐藏更改的作者要在编辑器中隐藏代码作者的姓名请执行以下操作之一打开编辑器镶嵌提示设置的代码视觉页面并禁用代码作者选项右键单击编辑器中的作者姓名提示然后选择注释以前的修订不仅允许您注释当前文件修订版本还可以注释其先前的修订版本注释装订线的上下文菜单提供以下选项注释修订如果您想检查提交特定更改后文件的外观此选项非常有用注释以前的修订如果您发现自己处于特定行中的最后更改毫无意义的情况例如如果所有更改都是代码格式则此选项很有用在这种情况下您可以检查该文件的先前版本是什么样子隐藏修订此选项有助于避免看到不相关或管理更改这些通常是由低级迁移或格式化操作引入的当这些更改影响整个根时它们会在注释对话框中造成混乱因此可能需要从视图和注释列中排除更改隐藏修订操作允许您从注释结果中就地排除修订并在编辑器和装订线中显示结果可以使用相反的操作恢复隐藏修订来恢复排除的修订有关隐藏修订的信息显示在编辑器顶部的通知面板中还可以通过单击通知面板中的相应链接来恢复隐藏的修订您还可以从历史记录视图中注释特定文件在历史记录选项卡中选择要查看的文件版本右键单击相应行并从上下文菜单中选择注释',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-09-29 17:28:18',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/xxx.css?1"><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/basic/avatar.png"><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://violet.zeabur.app/" title="博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/" title="Github"><img class="back-menu-item-icon" src="https://pic4.zhimg.com/v2-341e1d3b2845db15bceeff70d3fe228b_r.jpg" alt="Github"><span class="back-menu-item-text">Github</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Violet博客屋</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 博文</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 生活</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/shuoshuo/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 分享</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/photos/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/?id=1994908354&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 影视</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/equipment/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 我的装备</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文档</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-book faa-tada" style="font-size: 0.9em;"></i><span> 随机文章</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/document/"><i class="anzhiyufont anzhiyu-icon-book faa-tada" style="font-size: 0.9em;"></i><span> 文档页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/itbaima/"><i class="anzhiyufont anzhiyu-icon-book faa-tada" style="font-size: 0.9em;"></i><span> 柏码</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/runoob/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 菜鸟教程</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/itheima/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 黑马程序员</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/SpringCloudAlibaba/"><i class="anzhiyufont anzhiyu-icon-book faa-tada" style="font-size: 0.9em;"></i><span> 阿里微服务</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友人帐</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友链</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 网站导航</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/front/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 前端</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/back-end/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 后端</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/programmer/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 程序员</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/ai/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> AI</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><span> 关于笔者</span></a></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://c-ssl.dtstatic.com/uploads/blog/202304/15/20230415081411_9a88c.thumb.400_0.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://c-ssl.dtstatic.com/uploads/blog/202304/15/20230415081411_9a88c.thumb.400_0.jpg"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tupian.qqw21.com/article/UploadPic/2020-6/20206416212275003.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://tupian.qqw21.com/article/UploadPic/2020-6/20206416212275003.jpg"></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">18</span><span>篇</span></div></a></li></ul></div><hr></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url">工具</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/IDEA/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>IDEA</span></a></span></div></div><h1 class="post-title" itemprop="name headline">IDEA 使用 Git 详解(二)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-09-25T06:45:03.000Z" title="发表于 2024-09-25 14:45:03">2024-09-25</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-09-29T09:28:18.577Z" title="更新于 2024-09-29 17:28:18">2024-09-29</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">12.8k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>38分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="IDEA 使用 Git 详解(二)"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为长沙"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>长沙</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://boosterminiclass.com/wp-content/uploads/2023/07/intellij_idea_git_2.png"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope="" itemtype="http://example.com/posts/ae9ce5fc.html"><header><a class="post-meta-categories" href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url">工具</a><a href="/tags/IDEA/" tabindex="-1" itemprop="url">IDEA</a><h1 id="CrawlerTitle" itemprop="name headline">IDEA 使用 Git 详解(二)</h1><span itemprop="author" itemscope="" itemtype="http://schema.org/Person">violet</span><time itemprop="dateCreated datePublished" datetime="2024-09-25T06:45:03.000Z" title="发表于 2024-09-25 14:45:03">2024-09-25</time><time itemprop="dateCreated datePublished" datetime="2024-09-29T09:28:18.577Z" title="更新于 2024-09-29 17:28:18">2024-09-29</time></header><p><img src="/img/load.gif" data-original="https://n.sinaimg.cn/sinakd10116/612/w2000h1012/20200629/34e0-ivrxcex3246619.jpg" alt=" https://n.sinaimg.cn/sinakd10116/612/w2000h1012/20200629/34e0-ivrxcex3246619.jpg"></p>
+<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><p>Git 设置：<strong>设置 | 版本控制 | git</strong></p>
+<p>所需插件：Git（默认捆绑并启用）</p>
+<h2 id="为-Git-远程设置密码"><a href="#为-Git-远程设置密码" class="headerlink" title="为 Git 远程设置密码"></a>为 Git 远程设置密码</h2><p>每次与远程 Git 存储库交互时（例如，在 pull、update 或 push 操作期间），都需要授权。你可以将 IntelliJ IDEA 配置为记住你的密码。这样你就不必再每次需要授权时指定你的凭据了。</p>
+<p><strong>配置密码策略</strong></p>
+<blockquote>
+<ol>
+<li><p>在<strong>设置</strong>对话框中，选择<strong>外观和行为 | 系统设置 | 密码</strong> 在左边。<code>Ctrl</code> <code>Alt</code> <code>S</code></p>
+</li>
+<li><p>选择你希望 IntelliJ IDEA 如何处理 Git 远程存储仓库的密码：</p>
+<ul>
+<li><p><strong>在本机钥匙串中：</strong>选择此项可使用本机钥匙串来存储你的密码。此设置仅适用于 macOS 和 Linux。</p>
+</li>
+<li><p><strong>在 KeePass 中：</strong>选择此选项可使用<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cDovL2tlZXBhc3MuaW5mby8=">KeePass 密码管理器</a>来存储您的密码。</p>
+<p>当您使用KeePass 密码管理器时，将使用主密码来访问存储个人密码的文件。一旦 IntelliJ IDEA 记住您的密码，除非您需要访问密码数据库，否则它不会询问您的密码。在MasterPassword字段中输入将用于访问<strong>c.kdbx</strong>文件的密码。</p>
+<p>您可以在“数据库”字段中更改<strong>c.kdbx</strong>文件的默认位置。</p>
+<p>要导入<strong>c.kdbx</strong>文件，请单击并从下拉菜单中<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/icon_viewMode.png" alt="设置图标">选择“导入”<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app.general.ellipsis.svg" alt="浏览按钮"> ，或者单击并指定包含密码的本地文件的路径。</p>
+<p>如果您想从数据库中删除现有密码，请选择“清除”。</p>
+</li>
+<li><p>重新启动后不保存，忘记密码：如果您希望在关闭 IntelliJ IDEA 后重置密码，请选择此选项。</p>
+</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="设置-Git-存储库"><a href="#设置-Git-存储库" class="headerlink" title="设置 Git 存储库"></a>设置 Git 存储库</h2><p>当您<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXQtdXAtYS1naXQtcmVwb3NpdG9yeS5odG1sI2Nsb25lLXJlcG8=">克隆</a>现有的 Git 存储库或<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXQtdXAtYS1naXQtcmVwb3NpdG9yeS5odG1sI3B1dC1leGlzdGluZy1wcm9qZWN0LXVuZGVyLUdpdA==">将现有项目置于 Git 版本控制之下时</a>，IntelliJ IDEA 会自动检测您的计算机上是否安装了 Git。如果 IDE 找不到 Git 可执行文件，则建议下载它。</p>
+<p>IntelliJ IDEA 支持来自 Windows Subsystem for Linux 2 (WSL2) 的 Git，该子系统在<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9kZXZibG9ncy5taWNyb3NvZnQuY29tL2NvbW1hbmRsaW5lL3dzbDItd2lsbC1iZS1nZW5lcmFsbHktYXZhaWxhYmxlLWluLXdpbmRvd3MtMTAtdmVyc2lvbi0yMDA0Lw==">Windows 10 版本 2004</a>中提供。</p>
+<p>如果 Windows 上未安装 Git，IntelliJ IDEA 会在 WSL 中搜索 Git 并从那里使用它。**此外，对于使用\ \wsl$**路径打开的项目，IntelliJ IDEA 会自动从 WSL 切换到 Git 。</p>
+<p>如果您需要手动配置 IntelliJ IDEA 以从 WSL 使用 Git，请转到<strong>版本控制</strong> | IDE 设置的 <strong>Git</strong> 页面，单击Git 可执行文件路径字段中的浏览图标，然后通过路径选择 Git from WSL，例如。<code>Ctrl</code> <code>Alt</code> <code>S</code> <code>\wsl$</code> <code>\\wsl$\debian\usr\bin\git</code></p>
+<p><strong>1、从远程主机检出项目（git clone）</strong></p>
+<p>IntelliJ IDEA 允许你签出（用 Git 术语来说，克隆）现有存储库并根据你下载的数据创建新项目。</p>
+<blockquote>
+<ol>
+<li><p>要开始克隆 Git 存储库，请执行以下操作之一：</p>
+<ul>
+<li><p>如果版本控制集成已启用，请转至<strong>Git | 克隆</strong>。</p>
+</li>
+<li><p>如果尚未启用版本控制集成，请转至<strong>VCS | 从版本控制获取</strong>。</p>
+<p>或者，转到<strong>文件 | 新 | 来自版本控制的项目</strong>。</p>
+</li>
+<li><p>如果当前没有打开的项目，请单击“<strong>欢迎</strong>”屏幕上的“<strong>从 VCS 获取</strong>”。</p>
+</li>
+</ul>
+</li>
+<li><p>在“<strong>从版本控制获取</strong>”对话框中，指定要克隆的远程存储库的 URL，或选择左侧的 VCS 托管服务之一。</p>
+<p>如果您已经登录到所选的托管服务，完成后将建议您可以克隆的可用存储库列表。</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/get-from-vc-git.png" alt="从 GitHub 获取项目"></p>
+</li>
+<li><p>单击“<strong>克隆</strong>”。如果要基于已克隆的源创建项目，请在确认对话框中单击“<strong>是</strong>” 。Git 根映射将自动设置为项目根目录。</p>
+<p>如果您的项目包含<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9naXQtc2NtLmNvbS9ib29rL2VuL3YyL0dpdC1Ub29scy1TdWJtb2R1bGVz">子模块</a>，它们也将被克隆并自动注册为项目根。</p>
+</li>
+<li><p>在<strong>信任和开放项目“<project_name>”中</project_name></strong>？ <a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9wcm9qZWN0LXNlY3VyaXR5Lmh0bWw=">在项目安全对话框中</a>，选择您想要打开项目的方式：<strong>信任项目或在安全模式下预览</strong>。</p>
+</li>
+<li><p>当您第一次导入或克隆项目时，IntelliJ IDEA 会对其进行分析。如果 IDE 检测到多个配置（例如 Eclipse 和 Gradle），它会提示您选择要使用的配置。</p>
+<blockquote>
+<p>如果您要导入的项目使用构建工具，例如<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9tYXZlbi1zdXBwb3J0Lmh0bWw=">Maven</a>或<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9ncmFkbGUuaHRtbA==">Gradle</a>，我们建议您选择构建工具配置。</p>
+</blockquote>
+<p>选择必要的配置并单击“确定”。</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/import-from-providers.png" alt="提示您选择导入项目的方式的对话框"></p>
+<p>IDE 根据您的选择预先配置项目。例如，如果您选择Gradle，IntelliJ IDEA 将执行其构建脚本、加载依赖项等。</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>2、将现有项目置于 Git 版本控制之下</strong>﻿</p>
+<p><strong>①、将整个项目与单个 Git 存储库关联</strong>﻿</p>
+<blockquote>
+<ol>
+<li><p>打开您想要放入 Git 下的项目。</p>
+</li>
+<li><p>按打开<strong>VCS 操作弹出窗口</strong>并选择启用版本控制集成。<code>Alt</code> <code>~</code></p>
+<p>或者，转到 <strong>VCS | 启用版本控制集成</strong>。</p>
+</li>
+<li><p>选择Git作为版本控制系统，然后单击“<strong>确定</strong>”。</p>
+<p>然后，整个项目将与单个 Git 目录关联，因此无需将每个文件单独添加到 Git 目录。</p>
+</li>
+<li><p>启用 VCS 集成后，IntelliJ IDEA 会询问您是否要通过 VCS 共享项目设置文件。您可以选择始终添加以与使用 IntelliJ IDEA 的其他存储库用户同步项目设置。</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/sharing-project-notification.png" alt="通知提示选择如何处理配置文件"></p>
+</li>
+</ol>
+<blockquote>
+<p>如果VCS Operations 弹出窗口中没有可用的“启用版本控制集成”选项，则表示已为该项目启用了 Git 版本控制。</p>
+</blockquote>
+</blockquote>
+<p><strong>②、将项目内的不同目录与不同的 Git 存储库关联</strong>﻿</p>
+<blockquote>
+<ol>
+<li><p>打开您想要放入 Git 下的项目。</p>
+</li>
+<li><p>前往<strong>VCS | 创建 Git 存储库</strong>。</p>
+</li>
+<li><p>在打开的对话框中，指定将在其中创建新 Git 存储库的目录。</p>
+<p>Git 不支持外部路径，因此如果您选择项目根目录之外的目录，请确保要创建存储库的文件夹也包含项目根目录。</p>
+</li>
+<li><p>如果您要在项目结构内创建多个 Git 存储库，请对每个目录重复前面的步骤。</p>
+</li>
+</ol>
+</blockquote>
+<p>为项目<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXQtdXAtYS1naXQtcmVwb3NpdG9yeS5odG1sI3B1dC1leGlzdGluZy1wcm9qZWN0LXVuZGVyLUdpdA==">初始化 Git 存储库</a>后，您需要将项目文件添加到存储库。</p>
+<p><strong>3、添加文件到本地存储库</strong>﻿</p>
+<blockquote>
+<ol>
+<li><p>在 “<strong>提交</strong>”工具窗口中，展开“<strong>未版本化文件</strong>”节点。<code>Alt</code> <code>0</code></p>
+</li>
+<li><p>选择要添加到 Git 或整个更改列表的文件，然后按或从上下文菜单中选择“<strong>添加到 VCS</strong>” 。<code>Ctrl</code> <code>Alt</code> <code>A</code></p>
+<p>您还可以从“项目”工具窗口将文件添加到本地 Git 存储库：选择要添加的文件，然后按或选择“Git | Git”。从上下文菜单添加。<code>Ctrl</code> <code>Alt</code> <code>A</code></p>
+</li>
+</ol>
+</blockquote>
+<p>在项目中启用 Git 集成时，IntelliJ IDEA 建议在 Git 下添加每个新创建的文件，即使它是从 IntelliJ IDEA 外部添加的。您可以在版本控制 |中更改此行为。IDE 设置的 确认页面。如果您希望某些文件始终保持未版本化，则可以<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXQtdXAtYS1naXQtcmVwb3NpdG9yeS5odG1sI2lnbm9yZS1maWxlcw==">忽略它们</a>。<code>Ctrl</code> <code>Alt</code> <code>s</code></p>
+<blockquote>
+<p><strong>如果您尝试添加.gitignore</strong>列表中的文件，IntelliJ IDEA 将建议强制添加它。在确认对话框中单击“取消”只会取消强制添加忽略的文件 - 所有其他文件都将添加到 Git 存储库。</p>
+</blockquote>
+<p><strong>4、从版本控制中排除文件（忽略）</strong>﻿</p>
+<p>有时您可能需要保留某些文件未版本化。这些可以是 VCS 管理文件、实用程序工件、备份副本等。您可以通过 IntelliJ IDEA 忽略文件，IDE 不会建议将它们添加到 Git 并将它们突出显示为忽略。</p>
+<p>您只能忽略未版本化的文件，即您在未版本化文件更改列表中看到的文件。如果文件已<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXQtdXAtYS1naXQtcmVwb3NpdG9yeS5odG1sI2FkZC1uZXctZmlsZXM=">添加到 Git</a>但未<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9jb21taXQtYW5kLXB1c2gtY2hhbmdlcy5odG1s">提交，您可以在</a>“更改”视图中右键单击该文件 并选择“回滚”。</p>
+<p>Git 允许您在两种配置文件中列出忽略的文件模式：</p>
+<blockquote>
+<ul>
+<li><p><strong>.git /info /排除</strong>文件。</p>
+<p>此文件中列出的模式仅适用于存储库的本地副本。</p>
+<p>当您初始化或签出 Git 存储库时，会自动创建此文件。</p>
+</li>
+<li><p>VCS 根目录及其子目录中的一个或多个**.gitignore文件。**</p>
+<p>这些文件被签入存储库，以便整个团队都可以使用其中的忽略模式。因此，它是存储被忽略的文件模式的最常见位置。</p>
+<p>如果VCS根目录下没有**.gitignore<strong>文件，可以在Project工具窗口任意位置右键，选择New | 文件，然后在“新建文件”对话框中键入</strong>.gitignore**。</p>
+<blockquote>
+<p>要在 Windows 资源管理器中创建**.gitignore<strong>文件，请创建一个名为 .gitignore 的文件</strong>。<strong>Windows 会自动将其重命名为</strong>.gitignore**。</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<p><strong>5、将文件添加到 .gitignore 或 .git/info/exclude</strong>﻿</p>
+<blockquote>
+<ol>
+<li><p>决定要使用哪种<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXQtdXAtYS1naXQtcmVwb3NpdG9yeS5odG1sI2FkZC1naXRpZ25vcmU=">类型的 Git 配置文件来忽略文件。</a>如果有疑问，请使用**.gitignore**。</p>
+</li>
+<li><p>在“更改”视图或“项目”工具窗口中找到要忽略的未版本控制的文件或文件夹 。<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9maWxlLXN0YXR1cy1oaWdobGlnaHRzLmh0bWw=">这些视图中的文件颜色</a>可帮助您识别文件的状态。</p>
+</li>
+<li><p>右键单击所选内容并选择Git | 添加到 .gitignore或Git | 添加到 .git/info/exclude。</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9maWxlLXN0YXR1cy1oaWdobGlnaHRzLmh0bWw=">这些视图中的文件颜色</a>可帮助您识别文件的状态。</p>
+</li>
+</ol>
+</blockquote>
+<p>如果需要按某种模式或类型排除文件，可以直接编辑<code>.gitignore</code>或文件。<code>.git/info/exclude</code>请参阅<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9naXQtc2NtLmNvbS9kb2NzL2dpdGlnbm9yZT9vcmlnaW5fdGVhbT1UMDI4OEQ1MzE=">.gitignore 模式格式</a>。</p>
+<blockquote>
+<p>如果您希望<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXQtdXAtYS1naXQtcmVwb3NpdG9yeS5odG1sI2lnbm9yZS1maWxlcw==">忽略的文件</a>也显示在 “更改”视图中，请单击<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app.actions.show.svg" alt="眼睛图标">工具栏上的 并选择“显示忽略的文件”。</p>
+</blockquote>
+<p><strong>6、添加远程存储库</strong>﻿</p>
+<p>如果您基于本地源<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXQtdXAtYS1naXQtcmVwb3NpdG9yeS5odG1sI3B1dC1leGlzdGluZy1wcm9qZWN0LXVuZGVyLUdpdA==">创建了 Git 存储库</a>，则需要添加远程存储库以便能够在 Git 项目上进行协作，并消除在本地存储整个代码库的风险。当您需要共享您的工作并从中提取数据以将其他贡献者所做的更改集成到本地存储库版本时，您可以将更改推送到<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9jb21taXQtYW5kLXB1c2gtY2hhbmdlcy5odG1sI3B1c2g=">远程</a>存储<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zeW5jLXdpdGgtYS1yZW1vdGUtcmVwb3NpdG9yeS5odG1sI3B1bGw=">库</a>。</p>
+<p>如果您已<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXQtdXAtYS1naXQtcmVwb3NpdG9yeS5odG1sI2Nsb25lLXJlcG8=">克隆远程 Git 存储库</a>（例如，从<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9naXRodWIuY29tLw==">GitHub</a> ），则远程会自动配置，并且当您想要与其<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zeW5jLXdpdGgtYS1yZW1vdGUtcmVwb3NpdG9yeS5odG1s">同步</a>时不必指定它。Git 为您克隆的远程服务器提供的默认名称是origin。</p>
+<p>有关共享不同项目格式的项目设置的更多信息，请参阅 <a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9jb25maWd1cmUtcHJvamVjdC1zZXR0aW5ncy5odG1sI3NoYXJlLXByb2plY3QtdGhyb3VnaC12Y3M=">通过 VCS 共享项目设置</a>。</p>
+<p><strong>7、定义一个远程</strong>﻿</p>
+<blockquote>
+<ol>
+<li>在任何 Git 托管上创建一个空存储库，例如<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9iaXRidWNrZXQub3JnLw==">Bitbucket</a>或<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9naXRodWIuY29tLw==">GitHub</a>。您可以在 GitHub 上创建存储库，而无需离开 IntelliJ IDEA：请参阅<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9tYW5hZ2UtcHJvamVjdHMtaG9zdGVkLW9uLWdpdGh1Yi5odG1sI3NoYXJlLW9uLUdpdEh1Yg==">在 GitHub 上共享项目</a>。</li>
+<li>当您准备好通过选择 Git |推送提交时，调用“推送”对话框 从主菜单按下，或按。<code>Ctrl</code> <code>Shift</code> <code>K</code></li>
+<li>如果您到目前为止尚未添加任何遥控器，则会显示“定义远程”链接而不是遥控器名称。单击它以添加遥控器。</li>
+<li>在打开的对话框中，指定远程名称和托管它的 URL，然后单击“确定”。</li>
+</ol>
+</blockquote>
+<p><strong>8、添加第二个遥控器</strong>﻿</p>
+<p>在某些情况下，您还需要添加第二个远程存储库。例如，如果您克隆了一个没有写访问权限的存储库，并且要将更改推送到您自己的原始项目<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9mb3JrLWdpdGh1Yi1wcm9qZWN0cy5odG1sI2Zvcms=">分支，这可能会很有用。</a>另一个常见的情况是，您克隆了自己的存储库，这是其他人的项目分支，您需要与原始项目同步并从中获取更改。</p>
+<blockquote>
+<ol>
+<li>转到 Git | 管理遥控器。Git远程对话框将打开。</li>
+<li>单击工具栏上的“添加” 按钮或按。<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app.general.add.svg" alt="添加"><code>Alt</code> <code>Insert</code></li>
+<li>在打开的对话框中，指定远程名称和 URL，然后单击“确定”。</li>
+</ol>
+<ul>
+<li><p>要编辑远程（例如，更改已克隆的原始项目的名称），请右键单击<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9sb2ctdGFiLmh0bWwjQnJhbmNoZXNQYW5l">Git 日志工具窗口的“分支”窗格</a>中的远程分支，然后从上下文菜单中选择“编辑远程” 。</p>
+<p>您还可以通过单击遥控器的名称，从<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9wdXNoLWRpYWxvZy1tZXJjdXJpYWwtZ2l0Lmh0bWw=">推送对话框</a>中编辑遥控器。</p>
+</li>
+<li><p>要删除不再有效的存储库，请在<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9sb2ctdGFiLmh0bWwjQnJhbmNoZXNQYW5l">Git 日志工具窗口的“分支”窗格</a>中右键单击它，然后从上下文菜单中选择“删除远程” 。</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="将文件添加到-Git-并跟踪更改"><a href="#将文件添加到-Git-并跟踪更改" class="headerlink" title="将文件添加到 Git 并跟踪更改"></a>将文件添加到 Git 并跟踪更改</h2><p><strong>1、将文件添加到 Git</strong>﻿</p>
+<blockquote>
+<ol>
+<li>打开 提交工具窗口。<code>Alt</code> <code>0</code></li>
+<li>通过按或从上下文菜单中选择“添加到 VCS” ，将“无版本控制文件”更改列表中的任何文件置于版本控制之下。您可以添加整个更改列表或选择单独的文件。<code>Ctrl</code> <code>Alt</code> <code>A</code></li>
+</ol>
+</blockquote>
+<p>如果您已为项目启用 Git 集成，IntelliJ IDEA 建议将每个新创建的文件添加到版本控制下。您可以在“版本控制”| “设置”对话框中更改此行为。确认。如果您希望某些文件始终保持未版本化，您可以将 Git 配置为忽略它们。<code>Ctrl</code> <code>Alt</code> <code>s</code></p>
+<blockquote>
+<p>您还可以从项目工具窗口将文件添加到本地存储库。选择要添加的文件，然后按或选择Git | 从上下文菜单添加。<code>Ctrl</code> <code>Alt</code> <code>A</code></p>
+</blockquote>
+<p><strong>2、检查项目文件状态</strong>﻿</p>
+<p>ntelliJ IDEA 允许您检查本地工作副本与项目的存储库版本相比的状态。它可以让您查看哪些文件已被修改、哪些新文件已添加到 Git 以及哪些文件未被 Git 跟踪。</p>
+<p>打开 提交工具窗口。<code>Alt</code> <code>0</code></p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/Git_file_status.png" alt="Git 文件状态"></p>
+<ul>
+<li>更改更改列表显示自上次与远程存储库同步以来已修改的所有文件（以蓝色突出显示），以及已添加到 Git 但尚未提交的所有新文件（以绿色突出显示）。</li>
+<li>Unversioned Files更改列表显示已添加到项目中但 Git 未跟踪的所有文件。</li>
+</ul>
+<blockquote>
+<p>如果您希望忽略的文件也显示在 “更改”视图中，请单击<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app-client.expui.general.show.svg" alt="查看选项">工具栏上的 并选择“显示忽略的文件”。</p>
+</blockquote>
+<p><strong>3、在编辑器中跟踪文件的更改</strong></p>
+<p>您还可以在编辑器中修改文件时跟踪文件的更改。所有更改均通过更改标记突出显示，这些标记出现在已修改行旁边的装订线中，并显示自上次<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zeW5jLXdpdGgtYS1yZW1vdGUtcmVwb3NpdG9yeS5odG1s">与存储库同步</a>以来引入的更改类型。当您将更改提交到存储库时，更改标记就会消失。</p>
+<p>您对文本所做的更改是用颜色编码的：</p>
+<ul>
+<li><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/lineAddedMarker.png" alt="新添加行的标记">已添加行。</li>
+<li><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/lineChangededMarker.png" alt="修改行的标记">线路改变了。</li>
+<li><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/lineDeletedMarker.png" alt="已删除行的标记">行已删除。</li>
+</ul>
+<blockquote>
+<p>您可以在编辑器 |上自定义线路状态的默认颜色。配色方案| IDE 设置的 VCS页面。<code>Ctrl</code> <code>Alt</code> <code>s</code></p>
+<p>要禁用装订线中的 VCS 标记，请取消选择“版本控制”| “装订线”中的“突出显示装订线中已修改的行”选项。IDE 设置的 确认页面。<code>Ctrl</code> <code>Alt</code> <code>s</code></p>
+</blockquote>
+<p>您可以使用将鼠标悬停在更改标记上然后单击它时出现的工具栏来管理更改。工具栏与一个框架一起显示，该框架显示修改行的先前内容：</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/changeMarkerToolbar.png" alt="修改后的线标记"></p>
+<p>您可以通过单击回滚更改<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app-client.expui.vcs.revert.svg" alt="恢复图标">，并通过单击探索当前行的当前版本和存储库版本之间的差异<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app-client.expui.vcs.diff.svg" alt="显示差异图标">。要突出显示已更改的片段，请单击<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app-client.actions.highlighting.svg" alt="突出显示按钮">。</p>
+<p>您可以复制此弹出窗口内容的任何部分并将其粘贴到编辑器中，而不是恢复整个文件。</p>
+<p><strong>4、从存储库中删除文件</strong></p>
+<p>如果您删除受版本控制的文件，它仍然存在于存储库中，直到您提交更改为止。已删除的文件将放置在活动更改列表中并以灰色突出显示。</p>
+<blockquote>
+<ol>
+<li><p>在“项目”工具窗口中选择一个文件，然后按或从上下文菜单中选择“删除” 。<code>Delete</code></p>
+</li>
+<li><p>在打开的对话框中，您可以选择是要删除该文件而不搜索用途，还是通过选中“安全删除”选项来执行安全删除（以确保删除未使用的文件）。</p>
+<p>如果发现任何用法，将弹出“检测到用法”对话框，列出它们。您可以在删除该文件之前查看这些用法并删除对此文件的引用。</p>
+</li>
+<li><p>将更改提交到存储库。</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="与远程-Git-存储库同步（获取、拉取、更新）"><a href="#与远程-Git-存储库同步（获取、拉取、更新）" class="headerlink" title="与远程 Git 存储库同步（获取、拉取、更新）"></a>与远程 Git 存储库同步（获取、拉取、更新）</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9jb21taXQtYW5kLXB1c2gtY2hhbmdlcy5odG1sI3B1c2g=">在通过将更改推送到上游来</a>共享工作结果之前，您需要与远程存储库同步以确保项目的本地副本是最新的。您可以通过以下方式之一执行此操作：<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zeW5jLXdpdGgtYS1yZW1vdGUtcmVwb3NpdG9yeS5odG1sI2ZldGNo">获取更改</a>、<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zeW5jLXdpdGgtYS1yZW1vdGUtcmVwb3NpdG9yeS5odG1sI3B1bGw=">拉取更改</a>或<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zeW5jLXdpdGgtYS1yZW1vdGUtcmVwb3NpdG9yeS5odG1sI3VwZGF0ZQ==">更新项目</a>。</p>
+<p>Git分支弹出窗口指示分支是否有尚未获取的传入提交：</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/Git_branches_incoming_commits_indicator.png" alt="传入提交指示器"></p>
+<p><strong>1、获取更改</strong>﻿</p>
+<p>当您从上游获取更改时，自上次与远程存储库同步以来提交的所有新数据都会下载到本地副本中。这些新数据不会集成到您的本地文件中，并且更改不会应用于您的代码。</p>
+<p>获取的更改存储为远程分支，这使您有机会在将它们与文件<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9hcHBseS1jaGFuZ2VzLWZyb20tb25lLWJyYW5jaC10by1hbm90aGVyLmh0bWwjbWVyZ2U=">合并之前查看它们。</a>由于fetch不会影响你本地的开发环境。这是获取远程存储库所有更改更新的安全方法。</p>
+<p>有两种方法可以从上游获取更改：</p>
+<ul>
+<li><p>选择Git | 在主菜单中获取。</p>
+</li>
+<li><p>或者，打开“分支”弹出窗口并单击<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app.expui.vcs.fetch.svg" alt="获取图标">右上角。</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/VCS_fetch_from_branches_popup.png" alt="在分支弹出窗口中获取图标"></p>
+</li>
+</ul>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly95b3V0dS5iZS90bnoySTlyeHJmaw==">观看此视频</a>可更好地了解 IDE 中如何执行获取操作。</p>
+<p><strong>2、更新分支</strong>﻿</p>
+<p>如果您需要将特定分支与其远程跟踪分支同步，请使用更新。<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zeW5jLXdpdGgtYS1yZW1vdGUtcmVwb3NpdG9yeS5odG1sI2ZldGNo">这是获取</a>并随后将更改应用到所选分支的便捷快捷方式。</p>
+<ul>
+<li>在“分支”弹出窗口或 版本控制工具窗口的“分支”窗格中，选择一个分支并从上下文菜单中选择“更新” 。</li>
+</ul>
+<p>IntelliJ IDEA 将从远程分支中<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9naXQtc2NtLmNvbS9kb2NzL2dpdC1wdWxs">提取</a>更改，并将它们<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9hcHBseS1jaGFuZ2VzLWZyb20tb25lLWJyYW5jaC10by1hbm90aGVyLmh0bWwjcmViYXNlLWJyYW5jaA==">变基</a>或<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9hcHBseS1jaGFuZ2VzLWZyb20tb25lLWJyYW5jaC10by1hbm90aGVyLmh0bWwjbWVyZ2U=">合并</a>到本地分支，具体取决于在设置|中选择的更新方法。版本控制 | 吉特.</p>
+<p><strong>3、拉动变更</strong>﻿</p>
+<p>如果您需要从另一个分支而不是其远程跟踪分支获取对当前分支的更改，请使用pull。当您拉取时，您不仅下载新数据，还将其集成到项目的本地工作副本中。</p>
+<blockquote>
+<ol>
+<li><p>转到Git | 拉。“拉取更改”对话框打开：</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/git_pull_dialog.png" alt="拉动对话框"></p>
+</li>
+<li><p>如果您有一个多存储库项目，则会出现一个附加下拉列表，供您选择存储库。</p>
+</li>
+<li><p>如果您为项目定义了多个遥控器，请从列表中选择一个遥控器（默认情况下为<code>origin</code>）。</p>
+</li>
+<li><p>选择要将更改拉取到当前签出的分支的分支。默认情况下，选择当前本地分支跟踪的远程分支。如果您指定不同的分支，IntelliJ IDEA 将记住您的选择并在将来默认显示该分支。</p>
+</li>
+<li><p>如果您需要使用选项拉取，请单击“修改选项”并从以下选项中进行选择：</p>
+<ul>
+<li><code>--rebase</code>：从远程分支<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zeW5jLXdpdGgtYS1yZW1vdGUtcmVwb3NpdG9yeS5odG1sI2ZldGNo">获取</a>更改后，IntelliJ IDEA 会将本地未推送的更改<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9hcHBseS1jaGFuZ2VzLWZyb20tb25lLWJyYW5jaC10by1hbm90aGVyLmh0bWwjcmViYXNlLWJyYW5jaA==">重新设置</a>为已获取的更改。</li>
+<li><code>--ff-only</code>：只有可以快进时，合并才会被解决。</li>
+<li><code>--no-ff</code>：在所有情况下都会创建合并提交，即使可以将合并解析为快进。</li>
+<li><code>--squash</code>：将在当前分支之上创建包含所有拉取更改的单个提交。</li>
+<li><code>--no-commit</code>：将执行合并，但不会创建合并提交，以便您可以在提交之前检查合并的结果。</li>
+</ul>
+<p>有关<code>pull</code>选项的更多信息，请参阅<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9naXQtc2NtLmNvbS9kb2NzL2dpdC1wdWxsJUUzJTgwJTgy">https://git-scm.com/docs/git-pull。</a></p>
+</li>
+<li><p>单击“拉动”。</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>4、更新您的项目</strong>﻿</p>
+<p>如果您有多个项目根目录，或者希望每次与远程存储库同步时从所有分支获取更改，您可能会发现更新项目是更方便的选择。</p>
+<p>当您执行更新操作时，IntelliJ IDEA会从所有项目根和分支中<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zeW5jLXdpdGgtYS1yZW1vdGUtcmVwb3NpdG9yeS5odG1sI2ZldGNo">获取</a>更改，并将跟踪的远程分支<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9hcHBseS1jaGFuZ2VzLWZyb20tb25lLWJyYW5jaC10by1hbm90aGVyLmh0bWwjbWVyZ2U=">合并</a>到本地工作副本中（相当于pull）。</p>
+<blockquote>
+<p>如果您的项目包含<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9naXQtc2NtLmNvbS9ib29rL2VuL3YyL0dpdC1Ub29scy1TdWJtb2R1bGVz">子模块</a>，并且它们位于分支上，它们也会自动更新。</p>
+<p>如果子模块处于分离的 HEAD状态，IntelliJ IDEA 将调用<code>git submodule update</code>，这将检查根存储库中引用的提交。这意味着仅当根存储库中的子模块引用发生更改或添加新的子模块时才会执行更新。</p>
+</blockquote>
+<ol>
+<li>前往VCS | 更新项目或按。“更新项目”对话框打开。<code>Ctrl</code> <code>T</code></li>
+<li>选择更新类型（此策略将应用于 Git 版本控制下的所有根）：<ul>
+<li>将传入的更改合并到当前分支：选择此选项可在更新期间执行<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cDovL3NjaGFjb24uZ2l0aHViLmlvL2dpdC9naXQtbWVyZ2UuaHRtbA==">合并。</a>这相当于运行<code>git fetch</code>然后<code>git merge</code>, 或<code>git pull --no-rebase</code>。</li>
+<li>在传入更改之上对当前分支进行变基：选择此选项可在更新期间执行<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cDovL3NjaGFjb24uZ2l0aHViLmlvL2dpdC9naXQtcmViYXNlLmh0bWw=">变基。</a>这相当于运行<code>git fetch</code>然后<code>git rebase</code>，或者<code>git pull --rebase</code>（所有本地提交都将放在更新的上游头之上）。</li>
+</ul>
+</li>
+</ol>
+<p>如果您选择以后不显示“更新项目”对话框，然后想要稍后修改默认更新策略，请转到“版本控制”|“更新项目”对话框。IDE设置的 确认页面，在调用这些命令时显示选项对话框下选择更新，并在下次执行更新时修改更新策略。CtrlAlt0S</p>
+<p>更新操作完成后，Git工具窗口 中将添加 <a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS92ZXJzaW9uLWNvbnRyb2wtdG9vbC13aW5kb3ctdXBkYXRlLWluZm8tdGFiLmh0bWw=">“更新信息”</a>选项卡。<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9sb2ctdGFiLmh0bWw=">它列出了自上次与远程同步以来所做的所有提交，并允许您以与“日志”选项卡</a>中相同的方式查看更改。<code>Alt</code> <code>9</code></p>
+<blockquote>
+<p>如果您想查看自上次更新以来修改的所有文件的完整列表，请将插入符号放在提交列表中的任意位置，然后按。您可以禁用分组以查看平面列表：单击“更改的文件”窗格中的工具栏。<code>Ctrl</code> <code>A</code><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app.actions.groupBy.svg" alt="通过...分组"></p>
+</blockquote>
+<h2 id="提交更改并将其推送到-Git-存储库"><a href="#提交更改并将其推送到-Git-存储库" class="headerlink" title="提交更改并将其推送到 Git 存储库"></a>提交更改并将其推送到 Git 存储库</h2><blockquote>
+<p>配置提交选项：设置 | 版本控制 | 犯罪</p>
+<p>提交工具窗口 <code>Alt</code> <code>0</code></p>
+<p>犯罪 <code>Ctrl</code> <code>K</code></p>
+<p>提交和推送<code>Ctrl</code> <code>Alt</code> <code>K</code></p>
+<p>推 <code>Ctrl</code> <code>shift</code> <code>K</code></p>
+</blockquote>
+<p>将<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXQtdXAtYS1naXQtcmVwb3NpdG9yeS5odG1sI2FkZC1uZXctZmlsZXM=">新文件添加到 Git 存储库</a>，或修改已在 Git 版本控制下的文件，并且您对它们的当前状态感到满意后，您可以共享您的工作结果。这涉及到在本地<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9jb21taXQtYW5kLXB1c2gtY2hhbmdlcy5odG1sI2NvbW1pdA==">提交</a>它们以将存储库的快照记录到项目历史记录中，然后将它们<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9jb21taXQtYW5kLXB1c2gtY2hhbmdlcy5odG1sI3B1c2g=">推</a>送到远程存储库以便其他人可以使用它们。</p>
+<p><strong>1、设置您的 Git 用户名</strong>﻿</p>
+<p>Git 需要知道您的用户名才能将提交与身份关联起来。如果您尚未设置用户名，IntelliJ IDEA 将在您首次尝试提交更改时提示您指定用户名。</p>
+<ul>
+<li>打开<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS90ZXJtaW5hbC1lbXVsYXRvci5odG1s">终端</a>并执行以下命令之一：<ul>
+<li>要为计算机上的每个 Git 存储库设置名称，请使用<code>$ git config --global user.name "John Smith"</code></li>
+<li>要为单个存储库设置名称，请使用<code>$ git config user.name "John Smith"</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>2、在本地提交更改</strong>﻿</p>
+<blockquote>
+<ol>
+<li><p>打开 位于左侧的垂直提交工具窗口：<code>Alt</code> <code>0</code></p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/ij_VCS_commit_tool_window.png" alt="提交工具窗口"></p>
+</li>
+<li><p>当您的更改准备好提交时，选择相应的文件或整个更改列表。</p>
+<p>如果按，将选择整个活动更改列表。<code>Ctrl</code> <code>K</code></p>
+<p>您还可以选择Unversioned Files节点下的文件 - IntelliJ IDEA 将一步暂存并提交这些文件。</p>
+</li>
+<li><p>如果要将<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9lZGl0LXByb2plY3QtaGlzdG9yeS5odG1sI2FtZW5kLWNvbW1pdA==">本地更改附加到最新提交</a>而不是创建单独的提交，请选择“修改”选项。</p>
+</li>
+<li><p>输入提交消息。您可以单击<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app.vcs.history.svg" alt="提交消息历史记录按钮">以从最近提交消息的列表中进行选择。</p>
+<p>您还可以稍后在推送提交之前<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9lZGl0LXByb2plY3QtaGlzdG9yeS5odG1sI3Jld29yZC1jb21taXQ=">编辑提交消息。</a></p>
+<blockquote>
+<p>您可以在版本控制 |上自定义提交消息规则。IDE 设置的 提交页面。还有一个快速修复和重新格式化操作，可以换行长行或重新格式化消息。CtrlAlt0S</p>
+<p>您还可以定义将用作默认提交消息的提交模板。指定要在**.txt**文件中使用的样板文本，并在终端中执行以下命令将其添加到 Git 配置中：<code>git config --local commit.template &lt;path_to_template_file&gt;</code></p>
+</blockquote>
+</li>
+<li><p>如果您需要执行提交检查、提交后将文件上传到服务器或使用高级选项提交，请单击<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app.general.gearPlain.svg" alt="齿轮图标">右下角的 ：</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/ij_VCS_advanced_commit_options.png" alt="高级提交选项弹出窗口"></p>
+<p>可以使用以下选项：</p>
+<ul>
+<li><p>作者：如果您要提交其他人所做的更改，您可以指定这些更改的作者。</p>
+</li>
+<li><p>签署提交：选择是否要签署提交以证明您要签入的更改是由您做出的，或者您对所提交的代码负责。</p>
+<p>启用此选项后，将以下行自动添加到提交消息的末尾：签署人：&lt;用户名&gt;</p>
+</li>
+<li><p>在提交检查区域中，选择您希望 IntelliJ IDEA 在将所选文件提交到本地存储库时执行的操作。</p>
+<p>可以使用以下选项：</p>
+<ul>
+<li>重新格式化代码：根据<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXR0aW5ncy1jb2RlLXN0eWxlLmh0bWw=">项目代码样式</a>设置执行代码格式化。</li>
+<li>重新排列代码：根据<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9yZWZvcm1hdC1hbmQtcmVhcnJhbmdlLWNvZGUuaHRtbA==">偏好的排列规则</a>重新排列您的代码。</li>
+<li>优化导入：删除多余的导入语句。</li>
+<li>分析代码：在提交修改的文件时分析它们。单击选择配置文件以选择IDE 将运行检查的检查<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9jdXN0b21pemluZy1wcm9maWxlcy5odG1s">配置文件。</a></li>
+<li>检查 TODO (&lt;过滤器名称&gt;)：查看与指定过滤器匹配的<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS91c2luZy10b2RvLmh0bWw=">TODO 项。</a>单击“配置”以选择<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS91c2luZy10b2RvLmh0bWw=">现有的 TODO 过滤器</a>，或打开<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXR0aW5ncy10b2RvLmh0bWw=">TODO 设置页面</a>并定义要应用的新过滤器。</li>
+<li>清理：批量应用代码清理检查中的快速修复。单击选择配置文件以选择IDE 将运行检查的<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9jdXN0b21pemluZy1wcm9maWxlcy5odG1s">配置文件。</a></li>
+<li>运行测试：<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9wZXJmb3JtaW5nLXRlc3RzLmh0bWwjcnVuLXRlc3RzLWFmdGVyLWNvbW1pdA==">运行测试作为提交检查</a>。单击运行测试附近的选择配置，然后选择要运行的配置。</li>
+<li>更新版权：根据所选的版权配置文件 - 范围组合添加或更新版权声明。</li>
+</ul>
+</li>
+<li><p>在“提交后”区域中，您可以选择用于将提交的文件上传到本地或远程主机、已安装的磁盘或目录的<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9jb25maWd1cmluZy1zeW5jaHJvbml6YXRpb24td2l0aC1hLXJlbW90ZS1ob3N0Lmh0bWw=">服务器</a>访问配置或<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXJ2ZXItZ3JvdXBzLmh0bWw=">服务器组。</a>有关更多信息，请参阅<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9kZXBsb3lpbmctYXBwbGljYXRpb25zLmh0bWw=">部署您的应用程序</a>。</p>
+<p>可以使用以下选项：</p>
+<ul>
+<li><p>运行工具：选择您希望 IntelliJ IDEA 在提交所选更改后启动的<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9jb25maWd1cmluZy10aGlyZC1wYXJ0eS10b29scy5odG1s">外部工具。</a>您可以从列表中选择一个工具，或者单击“浏览”按钮并在打开的<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXR0aW5ncy10b29scy1leHRlcm5hbC10b29scy5odG1s">“外部工具”</a><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app.general.ellipsis.svg" alt="浏览按钮">对话框中配置外部工具。</p>
+</li>
+<li><p>将文件上传到：选择<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9jb25maWd1cmluZy1zeW5jaHJvbml6YXRpb24td2l0aC1hLXJlbW90ZS1ob3N0Lmh0bWw=">服务器访问配置</a>或<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXJ2ZXItZ3JvdXBzLmh0bWw=">服务器组</a>，用于将提交的文件上传到本地或远程主机、已安装的磁盘或目录。</p>
+<ul>
+<li>要禁止上传，请选择None。</li>
+<li>要将服务器配置添加到列表中，请单击<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app.general.ellipsis.svg" alt="浏览按钮">并填写打开的“添加服务器”对话框中的必填字段。</li>
+</ul>
+<p>仅当启用FTP/SFTP/WebDAV 连接插件时，该列表才可用。</p>
+</li>
+<li><p>始终使用选定的服务器或服务器组：始终将文件上传到选定的<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9jb25maWd1cmluZy1zeW5jaHJvbml6YXRpb24td2l0aC1hLXJlbW90ZS1ob3N0Lmh0bWw=">服务器</a>或<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXJ2ZXItZ3JvdXBzLmh0bWw=">服务器组</a>。</p>
+<p>仅当启用FTP/SFTP/WebDAV 连接插件时，该复选框才可用。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>准备就绪后，单击“提交”或“提交并推送”( ) 在提交后立即将更改推送到远程存储库。您将能够在将当前提交以及所有其他提交推送到远程之前查看它们。<code>Ctrl</code> <code>Alt</code> <code>K</code></p>
+</li>
+</ol>
+</blockquote>
+<p><strong>3、提交文件的一部分</strong>﻿</p>
+<p>有时，当您进行与特定任务相关的更改时，您还会应用影响同一文件的其他不相关的代码修改。<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS91bmRvLWNoYW5nZXMuaHRtbCNyZXZlcnQtY29tbWl0">将所有此类更改包含到一次提交中可能不是一个好的选择，因为审查、恢复</a>、<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9hcHBseS1jaGFuZ2VzLWZyb20tb25lLWJyYW5jaC10by1hbm90aGVyLmh0bWwjY2hlcnJ5LXBpY2s=">挑选</a>它们等会更加困难。</p>
+<p>IntelliJ IDEA 允许您通过以下方式之一单独提交此类更改：</p>
+<ul>
+<li><p>在“提交更改”对话框中选择要包含在提交中的修改后的<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9jb21taXQtYW5kLXB1c2gtY2hhbmdlcy5odG1sI3NlbGVjdF9jaHVua3NfaW5fY29tbWl0X2NoYW5nZXNfZGlhbG9n">代码块和行</a>，并将其他更改保留为待处理状态，以便稍后可以提交它们。</p>
+</li>
+<li><p>当您编辑代码时，将不同的代码块即时<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9jb21taXQtYW5kLXB1c2gtY2hhbmdlcy5odG1sI3B1dF9jaGFuZ2VzX2ludG9fZGlmZmVyZW50X2NoYW5nZWxpc3Rz">放入不同的更改列表中，然后分别提交这些更改列表。</a></p>
+<blockquote>
+<p>您还可以创建一个新的更改列表并<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS93b3JrLW9uLXNldmVyYWwtZmVhdHVyZXMtc2ltdWx0YW5lb3VzbHkuaHRtbCNjaGFuZ2VsaXN0cw==">使其处于活动状态</a>，然后您之后所做的所有更改都将落入该更改列表中，而您之前所做的任何修改都将保留在原处。</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>4、选择要提交的块和特定行</strong>﻿</p>
+<blockquote>
+<ol>
+<li><p>打开 提交工具窗口。<code>Alt</code> <code>0</code></p>
+</li>
+<li><p>要显示所选文件的存储库版本和本地版本之间的差异，请在 提交工具窗口中单击工具栏上的 或按。<code>Alt</code> <code>0</code><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app.actions.diff.svg" alt="差异图标"><code>Ctrl</code> <code>D</code></p>
+</li>
+<li><p>选中要提交的每个已修改或新添加的代码块旁边的复选框，并保留其他更改未选中：</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/partial_commit_dialog.png" alt="部分提交对话框"></p>
+<blockquote>
+<p>您还可以从已修改块的上下文菜单中选择移动到另一个更改列表，以在可以单独提交的不同更改列表之间拆分更改。</p>
+<p>要为此操作分配自定义快捷方式，请在IDE 设置的“ 键盘映射”页面上的“版本控制系统”下查找“将行移至另一个更改列表”操作。<code>Ctrl</code> <code>Alt</code> <code>s</code></p>
+</blockquote>
+</li>
+<li><p>如果您只想提交块中的特定行，请右键单击要包含的行，然后选择“ 拆分块”和“将所选行包含到提交中”。</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/include_line_to_commit.png" alt="IntelliJ IDEA：在上下文菜单中的提交中包含当前行的选项"></p>
+<p>或者，将鼠标悬停在装订线上，然后选择或清除要包含在提交中或从中排除的行旁边的复选框。</p>
+</li>
+<li><p>单击“提交”。未选定的更改将保留在当前更改列表中，以便您可以单独提交它们。</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>5、将更改放入不同的更改列表中</strong>﻿</p>
+<blockquote>
+<ol>
+<li><p>当您在编辑器中对文件进行更改时，请单击装订线中相应的<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9hZGRpbmctZmlsZXMtdG8tdmVyc2lvbi1jb250cm9sLmh0bWwjdHJhY2tfY2hhbmdlcw==">更改标记。</a></p>
+<blockquote>
+<p>如果装订线中没有更改标记，请确保在编辑器 |装订线中启用突出显示装订线中修改的行选项。IDE 设置的 常规页面。<code>Ctrl</code> <code>Alt</code> <code>s</code></p>
+</blockquote>
+</li>
+<li><p>在出现的工具栏中，选择已修改代码块的目标变更列表（或创建新的变更列表）：</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/partial_commit_changelists.png" alt="部分提交变更列表"></p>
+</li>
+<li><p>单独提交每个变更列表。</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>6、使用 Git 暂存区提交更改</strong>﻿</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9naXQtc2NtLmNvbS9kb2NzL2dpdC1hZGQ=">如果您更习惯于提交</a>更改的暂存概念，而不是使用自动暂存修改文件的<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS93b3JrLW9uLXNldmVyYWwtZmVhdHVyZXMtc2ltdWx0YW5lb3VzbHkuaHRtbCNjaGFuZ2VsaXN0cw==">更改列表</a>，请按 打开 IDE 设置并选择版本控制 | Git，然后选择启用暂存区域复选框。<code>Ctrl</code> <code>Alt</code> <code>s</code></p>
+<p>提交工具窗口现在如下所示：</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/git_staging_area.png" alt="Git暂存区"></p>
+<p>使用暂存区域可以让您轻松地分别提交对同一文件的更改（包括重叠更改），并查看哪些更改已经暂存，而无需从编辑器切换焦点。</p>
+<blockquote>
+<p>当您从使用更改列表切换到 Git 暂存区域时，所有现有更改列表都会保存。您可以在两种模式之间切换，而不会丢失所做的更改。</p>
+</blockquote>
+<p><strong>7、提交的阶段更改</strong>﻿</p>
+<ol>
+<li><p>执行以下操作之一：</p>
+<ul>
+<li><p>要暂存整个文件，请在 “提交”工具窗口中选择该文件并单击其右侧的 或按。<code>Alt</code> <code>0</code><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app.general.add.svg" alt="添加按钮"><code>Ctrl</code> <code>Alt</code> <code>A</code></p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/git_stage_from_toolwindow.png" alt="从“提交”工具窗口进入阶段"></p>
+</li>
+<li><p>要暂存文件中的特定块，请在编辑器中单击已修改块旁边的装订线中的<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9hZGRpbmctZmlsZXMtdG8tdmVyc2lvbi1jb250cm9sLmh0bWwjdHJhY2tfY2hhbmdlcw==">更改标记，然后单击</a>暂存。</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/git_stage_from_editor.png" alt="编辑器的阶段更改"></p>
+<p>暂存的更改（包括从 IntelliJ IDEA 外部暂存的更改）在编辑器中用边框形状的更改标记进行标记：</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/git_staged_marker.png" alt="用于分阶段更改的装订线标记"></p>
+</li>
+<li><p>要暂存粒度更改，例如单行而不是代码块，甚至是对单行的多个更改之一，请在“ 提交”工具窗口中，选择包含更改的文件，然后从上下文菜单中选择“比较 HEAD”、“暂存版本”和“本地版本”。<code>Alt</code> <code>0</code></p>
+<p>这将打开一个三向<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9kaWZmZXJlbmNlcy12aWV3ZXIuaHRtbA==">差异查看器</a>，其中左窗格显示存储库版本，右窗格显示本地版本，中央窗格是一个功能齐全的编辑器，您可以在其中进行想要暂存的更改。</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/git_stage_interactively.png" alt="舞台交互变化"></p>
+</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9jb21taXQtYW5kLXB1c2gtY2hhbmdlcy5odG1sI2NvbW1pdF90b29sX3dpbmRvdw==">准备就绪后，按照本地提交更改</a>中所述提交更改。</p>
+</li>
+</ol>
+<p><strong>8、将更改推送到远程存储库</strong>﻿</p>
+<p>在推送更改之前，<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zeW5jLXdpdGgtYS1yZW1vdGUtcmVwb3NpdG9yeS5odG1s">请与远程同步</a>并确保存储库的本地副本是最新的以避免冲突。</p>
+<p>IntelliJ IDEA 允许您将更改从任何分支上传到其<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9naXQtc2NtLmNvbS9ib29rL2VuL3YyL0dpdC1CcmFuY2hpbmctUmVtb3RlLUJyYW5jaGVz">跟踪分支</a>或任何其他远程分支。</p>
+<blockquote>
+<ol>
+<li><p>执行以下操作之一：</p>
+<ul>
+<li>要从当前分支推送更改，请按或选择 Git | 从主菜单推送。CtrlShift0K</li>
+<li>要从任何具有远程分支的本地分支推送更改，请在“分支”弹出窗口中选择该分支，然后从操作列表中选择“推送” 。</li>
+</ul>
+<p>“推送提交”对话框将打开，显示所有 Git 存储库（对于多存储库项目）并列出自上次推送以来在每个存储库的当前分支中进行的所有提交。</p>
+<p>如果您的项目使用多个非同步控制的存储库，则默认情况下仅选择当前存储库（有关启用同步存储库控制的更多信息，请参阅<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXR0aW5ncy12ZXJzaW9uLWNvbnRyb2wtZ2l0Lmh0bWw=">版本控制设置：Git</a>）。</p>
+<blockquote>
+<p>您可以按所选提交来显示额外信息，例如提交作者、时间、哈希值和提交消息。Ctrl0Q</p>
+</blockquote>
+</li>
+<li><p>如果存储库中没有遥控器，则会显示“定义远程”链接。单击此链接并在打开的对话框中指定远程名称和 URL。它将被保存，您可以稍后通过 Git 进行编辑 | 管理远程（有关更多信息，请参阅<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXQtdXAtYS1naXQtcmVwb3NpdG9yeS5odG1sI2FkZC1yZW1vdGU=">添加远程存储库</a>）。</p>
+</li>
+<li><p>如果你想修改要推送的目标分支，可以点击分支名称。该标签会变成一个文本字段，您可以在其中键入现有分支名称或创建新分支。您还可以单击右下角的编辑所有目标链接来同时编辑所有分支名称。</p>
+<p>请注意，您无法更改本地分支：将推送每个选定存储库的当前分支。</p>
+<blockquote>
+<p>您还可以通过按所选元素的或切换到编辑模式。EnterF2</p>
+</blockquote>
+</li>
+<li><p>如果您已经进行了一些提交但还不想推送到远程分支，请在Git工具窗口的“日志”选项卡中选择要推送的最后一个提交，然后从列表中选择“将所有内容推送到此处…”选项行动。</p>
+<p>“推送提交”对话框将打开，显示直到所选提交哈希的所有提交。</p>
+</li>
+<li><p>如果您想在推送更改之前预览更改，请选择所需的提交。右侧窗格显示所选提交中包含的更改。您可以使用工具栏按钮检查提交详细信息。</p>
+<p>如果提交的作者与当前用户不同，则该提交将标有星号。</p>
+<blockquote>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>如果您选择整个存储库，所有提交的所有文件将在右窗格中列出。</p>
+<p>如果在多次提交中修改了同一文件，则当您选择这些提交或整个存储库时，该文件只会列出一次，并且如果您为此文件调用<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9kaWZmZXJlbmNlcy12aWV3ZXIuaHRtbA==">差异查看器，则所有更改都将被压缩在一起。</a></p>
+</blockquote>
+</li>
+<li><p>准备好后单击“推送”按钮，然后从下拉菜单中选择要执行的操作：“推送”或“强制推送”（相当于<code>push --force-with-lease</code>）。</p>
+<p>仅当当前分支未在受保护的分支字段中列出时（请参阅<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXR0aW5ncy12ZXJzaW9uLWNvbnRyb2wtZ2l0Lmh0bWw=">版本控制设置：Git</a>），这些选择选项才可用，否则，您只能执行该<code>push</code>操作。</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>9、如果推送被拒绝，请更新您的工作副本</strong>﻿</p>
+<p>如果由于工作副本已过时而拒绝推送，IntelliJ IDEA 将显示“推送被拒绝”对话框，前提是未选择“设置”对话框的<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXR0aW5ncy12ZXJzaW9uLWNvbnRyb2wtZ2l0Lmh0bWw=">Git 设置</a>页面中的“如果当前分支的推送被拒绝则自动更新”选项。请执行下列操作：</p>
+<blockquote>
+<ol>
+<li><p>如果您的项目使用多个 Git 存储库，请指定要更新其中的哪个。如果您想要更新所有存储库，无论推送是否被拒绝，请选择更新所有存储库选项。如果清除此选项，则仅更新受影响的存储库。</p>
+</li>
+<li><p>如果您希望 IntelliJ IDEA 在下次使用您在此对话框中选择的更新方法拒绝推送时静默应用更新过程，请选择记住更新方法选择并在将来静默更新选项。</p>
+<p>离开此对话框后， “设置”对话框的<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zZXR0aW5ncy12ZXJzaW9uLWNvbnRyb2wtZ2l0Lmh0bWw=">Git 设置</a>页面中的“如果当前分支的推送被拒绝，则自动更新”复选框将被选中，并且应用的更新方法将成为默认方法。</p>
+<p>要更改更新策略，请取消选择此选项以在下次当前分支的推送被拒绝时调用“推送被拒绝”对话框，应用不同的更新过程，然后再次选择“记住更新方法选择”选项。</p>
+</li>
+<li><p>通过分别单击<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cDovL3NjaGFjb24uZ2l0aHViLmlvL2dpdC9naXQtcmViYXNlLmh0bWw=">“变基”</a>或“合并”按钮来选择更新方法（ “变基”或“<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cDovL3NjaGFjb24uZ2l0aHViLmlvL2dpdC9naXQtbWVyZ2UuaHRtbA==">合并”）。</a></p>
+</li>
+</ol>
+</blockquote>
+<p><strong>10、什么时候需要使用强制推送？</strong>﻿</p>
+<p>当您运行push时，如果远程存储库中有您丢失的更改并且您将用存储库的本地副本覆盖，Git 将拒绝完成操作。通常，您需要执行<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9zeW5jLXdpdGgtYS1yZW1vdGUtcmVwb3NpdG9yeS5odG1sI3B1bGw=">拉取</a>以与远程同步，然后再使用更改进行更新。</p>
+<p>该<code>--force push</code>命令禁用此检查并允许您覆盖远程存储库，从而擦除其历史记录并导致数据丢失。在幕后，当您选择强制推送时，IntelliJ IDEA 会执行该<code>push --force-with-lease</code>操作，这是一个更安全的选项，可帮助您确保不会覆盖其他人的提交（有关推送选项的更多详细信息，请参阅<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9naXQtc2NtLmNvbS9kb2NzL2dpdC1wdXNo">git Push ）。</a></p>
+<p>您可能仍需要执行的一种可能情况<code>--force push</code>是，您对推送的分支进行变基，然后想要将其推送到远程服务器。在这种情况下，当您尝试推送时，Git 将拒绝您的更改，因为远程引用不是本地引用的祖先。如果您在这种情况下执行拉取，您最终将得到分支的两个副本，然后需要合并它们。</p>
+<h2 id="比较文件和文件夹版本"><a href="#比较文件和文件夹版本" class="headerlink" title="比较文件和文件夹版本"></a>比较文件和文件夹版本</h2><p>IntelliJ IDEA 允许您检查文件/文件夹的两个修订版之间或其当前本地副本与存储库版本之间的差异。差异显示在差异查看器中。</p>
+<p><strong>有关在差异查看器</strong>中过滤、导航和应用更改的更多信息，请参阅<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9jb21wYXJpbmctZmlsZXMtYW5kLWZvbGRlcnMuaHRtbA==">比较文件、文件夹和文本源</a>。</p>
+<p><strong>1、将修改后的文件与其 Git 存储库版本进行比较</strong>﻿</p>
+<blockquote>
+<ol>
+<li><p>打开 提交工具窗口。Alt00</p>
+</li>
+<li><p>在更改列表中找到所需的文件并执行以下操作之一：</p>
+<ul>
+<li>右键单击该文件并选择Git | 显示差异。</li>
+<li>选择文件并按。Ctrl0D</li>
+<li>双击该文件。</li>
+</ul>
+</li>
+<li><p>将打开差异视图，其中突出显示对文件的更改。</p>
+<p>右窗格包含文件的修改版本。您可以在差异视图中对其进行编辑。</p>
+<p>左窗格包含文件的初始版本。它是只读的。您可以单击<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app-client.expui.diff.applyNotConflictsLeft.svg" alt="恢复">(恢复) 来撤消更改。</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>2、将文件或文件夹的当前版本与同一 Git 分支中的版本进行比较</strong>﻿</p>
+<blockquote>
+<ol>
+<li>在“项目”工具窗口中选择一个文件或文件夹，然后选择“Git | Git”。从上下文菜单中与修订版进行比较。</li>
+<li>从打开的对话框中选择要与当前文件或文件夹版本进行比较的修订版本。</li>
+</ol>
+</blockquote>
+<p><strong>3、将文件或文件夹的当前版本与另一个 Git 分支进行比较</strong>﻿</p>
+<blockquote>
+<ol>
+<li>在“项目”工具窗口中选择一个文件或文件夹，然后选择“Git | Git”。从上下文菜单中与分支进行比较。</li>
+<li>从打开的对话框中选择要与当前文件或文件夹版本进行比较的分支。</li>
+</ol>
+</blockquote>
+<h2 id="调查-Git-存储库中的更改"><a href="#调查-Git-存储库中的更改" class="headerlink" title="调查 Git 存储库中的更改"></a>调查 Git 存储库中的更改</h2><p>在IntelliJ IDEA中，您可以追溯项目中的所有更改&gt;。这可以帮助您<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9pbnZlc3RpZ2F0ZS1jaGFuZ2VzLmh0bWwjYW5ub3RhdGVfYmxhbWU=">找到任何更改的作者，查看</a><a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9pbnZlc3RpZ2F0ZS1jaGFuZ2VzLmh0bWwjZmlsZS1oaXN0b3J5">文件版本</a>或提交之间的差异，并在必要时<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS91bmRvLWNoYW5nZXMuaHRtbA==">安全地回滚和撤消</a>更改。</p>
+<p><strong>1、回顾项目历史</strong>﻿</p>
+<p>您可以查看对与指定过滤器匹配的项目源所做的所有更改。要查看项目历史记录，请打开 Git工具窗口 的 “日志”选项卡。它显示了提交给所有分支和远程存储库的所有更改 <code>Alt</code> <code>9</code>：</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/git_log_view.png" alt="日志视图"></p>
+<p>在多存储库项目中，左侧的彩色条纹指示所选提交属于哪个根（每个根都标有自己的颜色）。将鼠标悬停在彩色条纹上可调用显示根路径的提示：</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/log_root_path.png" alt="根路径"></p>
+<p><strong>2、浏览和搜索项目历史记录</strong>﻿</p>
+<ul>
+<li><p>通过输入完整的提交名称或消息或其片段、修订号或正则表达式来搜索提交列表。</p>
+</li>
+<li><p>按分支或最喜欢的分支、用户、日期和文件夹（或多根项目的根和文件夹）过滤提交。</p>
+</li>
+<li><p>单击工具栏上的“转到哈希/分支/标签” 图标，或按并指定提交哈希、<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS91c2UtdGFncy10by1tYXJrLXNwZWNpZmljLWNvbW1pdHMuaHRtbA==">标签</a>或要跳转到的分支的名称（您将被带到该分支中的最新提交）。<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app.actions.find.svg" alt="去"><code>Ctrl</code> <code>F</code></p>
+</li>
+<li><p>单击箭头跳转到长分支中的下一个提交：</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/jumpToNextCommit.png" alt="跳转到下一个提交"></p>
+</li>
+<li><p>按和键跳转到父/子提交。如果您在Git工具窗口 的“日志”选项卡 中混合了对不同存储库和多个分支的提交，这尤其有用 。<code>←</code> <code>→</code> <code>Alt</code> <code>9</code></p>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>按 将焦点切换到搜索字段。Ctrl0L</li>
+<li>为了避免来回设置过滤器，请单击<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app.general.add.svg" alt="添加按钮">工具栏上的 来打开与您的过滤器匹配的新选项卡。</li>
+<li>要自定义日期格式，请转至设置 | 外观和行为| 系统设置| 日期格式。</li>
+</ul>
+</blockquote>
+<p>有关 Git工具窗口 的 “日志”选项卡的更多信息，请参阅<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9sb2ctdGFiLmh0bWw=">“日志”选项卡</a>。<code>Alt</code> <code>9</code></p>
+<p><strong>3、查看特定修订版的项目快照</strong>﻿</p>
+<p>IntelliJ IDEA 允许您在选定的修订版本中查看项目的状态。</p>
+<blockquote>
+<ol>
+<li>打开 Git工具窗口 并切换到“日志”选项卡。<code>Alt</code> <code>9</code></li>
+<li>选择一个提交，然后从上下文菜单中选择“显示修订版本的存储库” 。</li>
+</ol>
+</blockquote>
+<p>将打开“存储库”工具窗口，其中包含所选版本的项目快照。</p>
+<p><strong>4、查看两次提交之间的差异</strong>﻿</p>
+<p>IntelliJ IDEA 允许您检查两次提交之间修改了哪些文件，而不必浏览两次提交之间的更改。</p>
+<blockquote>
+<ul>
+<li><p>在Git工具窗口 的 “日志”选项卡中选择任意两个提交 ，然后从上下文菜单中选择“比较版本” 。<code>Alt</code> <code>9</code></p>
+<p>将打开“更改”工具窗口，其中包含所选提交之间修改的文件列表。<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/devkit.icons.gutter.diff.svg" alt="显示差异图标">您可以通过单击或按 来查看任何文件的差异。<code>Ctrl</code> <code>D</code></p>
+</li>
+</ul>
+</blockquote>
+<p><strong>5、查看文件历史记录</strong>﻿</p>
+<p>您可以查看对特定文件所做的所有更改，并查找每个版本中具体修改的内容。</p>
+<blockquote>
+<ol>
+<li>在任何视图（项目工具窗口、编辑器、 更改视图等）中选择必要的文件。</li>
+<li>选择Git | 从VCS主菜单或选择的上下文菜单显示历史记录。“历史记录”选项卡已添加到 Git工具窗口，显示所选文件的历史记录，并允许您查看和比较其修订版本。</li>
+<li>要确定特定修订版中引入了哪些更改，请在列表中选择它。在面板的右侧立即显示差异。</li>
+<li>要在专用差异查看器中查看整个文件的差异，请在列表中选择它，然后按或单击工具栏上的按钮。<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9kaWZmZXJlbmNlcy12aWV3ZXIuaHRtbA==">差异查看器</a>将打开，显示此版本中的更改。<code>Ctrl</code> <code>D</code><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app.actions.diff.svg" alt="显示差异"></li>
+</ol>
+</blockquote>
+<p><strong>6、查看本地和提交的文件版本之间的差异</strong></p>
+<p>您可以检查提交的文件修订与其本地版本有何不同：</p>
+<blockquote>
+<ol>
+<li>打开 Git工具窗口 并切换到“日志”选项卡。<code>Alt</code> <code>9</code></li>
+<li>选择您感兴趣的提交，然后在右侧窗格中选择文件。</li>
+<li>单击<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app.actions.diff.svg" alt="显示差异">工具栏上的按钮。</li>
+</ol>
+</blockquote>
+<p><strong>7、查看更改的合并方式</strong>﻿</p>
+<p>IntelliJ IDEA 允许您查看如何将更改<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9hcHBseS1jaGFuZ2VzLWZyb20tb25lLWJyYW5jaC10by1hbm90aGVyLmh0bWwjbWVyZ2U=">从一个分支合并到另一个分支</a>，以及在合并期间如何<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9yZXNvbHZlLWNvbmZsaWN0cy5odG1s">解决冲突（如果有）：</a></p>
+<blockquote>
+<ul>
+<li><p>在 Git工具窗口 的 “日志”选项卡中，选择您感兴趣的合并提交。<code>Alt</code> <code>9</code></p>
+<ul>
+<li><p>如果在合并过程中未检测到并解决任何冲突，IntelliJ IDEA 将在“更改的文件”窗格中显示相应的消息，并建议检查源自父级的更改：</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/vcs_log_changes_from_parents.png" alt="来自父母的改变"></p>
+<p>从节点之一选择所需的文件，然后单击工具栏上的“显示差异” 图标或按。<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9kaWZmZXJlbmNlcy12aWV3ZXIuaHRtbA==">差异查看器</a>将显示两个面板的差异，允许您将当前版本与选定的父版本进行比较。<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app.actions.diff.svg" alt="显示差异"><code>Ctrl</code> <code>D</code></p>
+</li>
+<li><p>如果合并期间发生冲突，“更改的文件”窗格将显示合并有冲突的文件列表。</p>
+<p>选择所需的文件，然后单击工具栏上的“显示差异” 图标或按。<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9kaWZmZXJlbmNlcy12aWV3ZXIuaHRtbA==">差异查看器</a>将显示一个三面板差异，允许您将当前版本与其每个父版本进行比较，并查看冲突是如何解决的。<img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/app.actions.diff.svg" alt="显示差异"><code>Ctrl</code> <code>D</code></p>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p><strong>8、找到代码作者（使用 Git Blame 进行注释）</strong>﻿</p>
+<p>您可以使用VCS 注释（对应于<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9naXQtc2NtLmNvbS9kb2NzL2dpdC1ibGFtZQ==">git-blame</a> ）找出谁对文件引入了哪些更改。带注释的视图显示了每行代码的详细信息：</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/annotate.png" alt="注释"></p>
+<p>当前版本中修改的行的注释用粗体和星号标记。</p>
+<p>默认情况下，不同的提交以不同的颜色突出显示（请参阅<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9pbnZlc3RpZ2F0ZS1jaGFuZ2VzLmh0bWwjY29uZmlndXJlLWFubm90YXRpb25z">配置注释中显示的信息量</a>）。</p>
+<p>从注释视图，您可以跳转到：</p>
+<ul>
+<li><p>Git工具窗口 的“日志”选项卡 中的相应提交 ：单击注释或将鼠标悬停在其上，然后单击弹出窗口中包含详细信息的提交哈希。<code>Alt</code> <code>9</code></p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/git-blame-hover.png" alt="弹出窗口，其中包含有关提交的详细信息"></p>
+</li>
+<li><p>行的差异：将鼠标悬停在注释上。IDE 将突出显示该行以及相应提交的更改。</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/git-blame-difference-in-lines.png" alt="线路差异"></p>
+</li>
+<li><p><a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9naXRodWIuY29tLw==">https://github.com</a>上的相应提交：使用Open on GitHub上下文菜单选项。</p>
+</li>
+<li><p>如果启用了<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9oYW5kbGluZy1pc3N1ZXMuaHRtbA==">问题导航</a>，则错误跟踪系统中的相关问题：将鼠标悬停在注释上，然后单击问题链接（如果提交消息中包含该链接）</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>启用注释</strong>﻿</p>
+<ul>
+<li><p>右键单击编辑器或<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9kaWZmZXJlbmNlcy12aWV3ZXIuaHRtbA==">差异查看器</a>中的装订线，然后从上下文菜单中选择使用 Git Blame 进行注释。</p>
+<p>您可以为“注释”命令分配自定义快捷方式：转到IDE 设置的 “键盘映射”页面，然后查找“版本控制系统”|“版本控制系统”。git | git 注释。CtrlAlt0S</p>
+<p>要关闭注释，请右键单击编辑器或<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9kaWZmZXJlbmNlcy12aWV3ZXIuaHRtbA==">差异查看器</a>中的装订线，然后从上下文菜单中选择“关闭注释” 。</p>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>配置注释中显示的信息量</strong>﻿</p>
+<p>您可以选择要在注释视图中查看的信息量。</p>
+<ul>
+<li><p>右键单击注释装订线，选择“查看”并选择要查看的信息类型，包括此更改源自的修订版、日期、不同格式的作者姓名以及提交号。</p>
+<p>您还可以在“颜色”下设置突出显示。</p>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>配置注释选项</strong>﻿</p>
+<ul>
+<li>右键单击注释装订线并从上下文菜单中选择选项：<ul>
+<li>忽略空格：空格将被忽略（git <code>blame -w</code>）。这意味着注释将指向先前有意义的提交。</li>
+<li>检测文件内的移动：当提交在同一文件中移动或复制行时，此类更改将被忽略（git <code>blame -M</code>）。这意味着注释将指向先前有意义的提交。</li>
+<li>检测跨文件的移动：当提交移动或复制在同一提交中修改的其他文件中的行时，此类更改将被忽略（git <code>blame -C</code>）。这意味着注释将指向先前有意义的提交。</li>
+<li>显示提交时间戳：如果您希望 IntelliJ IDEA 在注释视图中显示提交时间戳而不是创作更改的时间，请选择此选项。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>自定义日期格式</strong>﻿</p>
+<ol>
+<li>按打开 IDE 设置，然后选择外观和行为 | 系统设置| 日期格式。<code>Ctrl</code> <code>Alt</code> <code>S</code></li>
+<li>单击“VCS 注释”旁边的“日期时间模式”字段，并指定要用于 VCS 注释的日期格式。请参阅<a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9kb2NzLm9yYWNsZS5jb20vamF2YXNlLzcvZG9jcy9hcGkvamF2YS90ZXh0L1NpbXBsZURhdGVGb3JtYXQuaHRtbA==">模式参考</a>。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p><strong>在编辑器中显示更改的作者</strong>﻿</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="/go.html?u=aHR0cHM6Ly9pbnRlbGxpamlkZWEuY29tLmNuL2hlbHAvaWRlYS9pbmxheS1oaW50cy5odG1s">您可以将编辑器配置为在嵌入提示</a>中显示对元素（方法或类）的最后更改的作者。要打开它们：</p>
+<ol>
+<li><p>按打开 IDE 设置，然后选择编辑器 | 镶嵌提示| 代码愿景。CtrlAlt0S</p>
+</li>
+<li><p>选择代码作者选项。</p>
+</li>
+<li><p>选择显示作者姓名的位置：</p>
+<ul>
+<li><p>在线顶部（默认）</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/annotate-inlay-hints-top-hl.png" alt="代码视觉镶嵌提示 置顶"></p>
+</li>
+<li><p>在右侧</p>
+<p><img src="/img/load.gif" data-original="https://intellijidea.com.cn/help/img/idea/2023.2/annotate-inlay-hints-right-hl.png" alt="代码视觉镶嵌提示右"></p>
+</li>
+</ul>
+</li>
+</ol>
+<p>启用此选项后，您可以单击编辑器中的作者姓名提示来打开带注释的视图。</p>
+</blockquote>
+<blockquote>
+<p><strong>隐藏更改的作者</strong>﻿</p>
+<p>要在编辑器中隐藏代码作者的姓名，请执行以下操作之一：</p>
+<ul>
+<li>打开编辑器 | 镶嵌提示| IDE 设置的 “代码视觉”页面并禁用“代码作者”选项。CtrlAlt0S</li>
+<li>右键单击编辑器中的作者姓名提示，然后选择Hide <code>Code Vision: Code Author</code> Inlay Hints。</li>
+</ul>
+</blockquote>
+<p><strong>9、注释以前的修订</strong>﻿</p>
+<p>IntelliJ IDEA 不仅允许您注释当前文件修订版本，还可以注释其先前的修订版本。注释装订线的上下文菜单提供以下选项：</p>
+<ul>
+<li>注释修订：如果您想检查提交特定更改后文件的外观，此选项非常有用。</li>
+<li>注释以前的修订：如果您发现自己处于特定行中的最后更改毫无意义的情况（例如，如果所有更改都是代码格式），则此选项很有用。在这种情况下，您可以检查该文件的先前版本是什么样子。</li>
+<li>隐藏修订：此选项有助于避免看到不相关或管理更改。这些通常是由低级迁移或格式化操作引入的。当这些更改影响整个根时，它们会在“注释”对话框中造成混乱，因此可能需要从视图和“注释”列中排除更改。“隐藏修订”操作允许您从注释结果中就地排除修订，并在编辑器和装订线中显示结果。可以使用相反的操作“恢复隐藏修订”来恢复排除的修订。有关隐藏修订的信息显示在编辑器顶部的通知面板中。还可以通过单击通知面板中的相应链接来恢复隐藏的修订。</li>
+</ul>
+<p>您还可以从“历史记录”视图中注释特定文件。在“历史记录”选项卡中，选择要查看的文件版本，右键单击相应行并从上下文菜单中选择“注释” 。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src="/img/basic/avatar.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src="/img/basic/avatar.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">violet</div><div class="post-copyright__author_desc">生活明朗，万物可爱</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/posts/ae9ce5fc.html">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/posts/ae9ce5fc.html')">IDEA 使用 Git 详解(二)</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://c-ssl.dtstatic.com/uploads/blog/202304/15/20230415081411_9a88c.thumb.400_0.jpg" target="_blank"><img class="post-qr-code-img" src="https://c-ssl.dtstatic.com/uploads/blog/202304/15/20230415081411_9a88c.thumb.400_0.jpg" alt="微信"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tupian.qqw21.com/article/UploadPic/2020-6/20206416212275003.jpg" target="_blank"><img class="post-qr-code-img" src="https://tupian.qqw21.com/article/UploadPic/2020-6/20206416212275003.jpg" alt="支付宝"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/posts/ae9ce5fc.html"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=IDEA 使用 Git 详解(二)&amp;url=http://example.com/posts/ae9ce5fc.html&amp;pic=https://boosterminiclass.com/wp-content/uploads/2023/07/intellij_idea_git_2.png" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Violet博客屋</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/IDEA/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>IDEA<span class="tagsPageCount">4</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://picx.zhimg.com/v2-fa9bc3ed9d6f65d08873fc8cd2eec058_720w.jpg?source=172ae18b" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/7f7493d0.html"><img class="prev-cover" src="https://boosterminiclass.com/wp-content/uploads/2023/07/intellij_idea_git_2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">IDEA 使用 Git 详解(一)</div></div></a></div><div class="next-post pull-right"><a href="/posts/d06fc5d7.html"><img class="next-cover" src="https://boosterminiclass.com/wp-content/uploads/2023/07/intellij_idea_git_2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">IDEA 使用 Git 详解(三)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/posts/7f7493d0.html" title="IDEA 使用 Git 详解(一)"><img class="cover" src="https://boosterminiclass.com/wp-content/uploads/2023/07/intellij_idea_git_2.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-09-25</div><div class="title">IDEA 使用 Git 详解(一)</div></div></a></div><div><a href="/posts/d06fc5d7.html" title="IDEA 使用 Git 详解(三)"><img class="cover" src="https://boosterminiclass.com/wp-content/uploads/2023/07/intellij_idea_git_2.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-09-25</div><div class="title">IDEA 使用 Git 详解(三)</div></div></a></div><div><a href="/posts/97a0a1c6.html" title="Idea下载安装"><img class="cover" src="https://tse1-mm.cn.bing.net/th/id/OIP-C.YD64LaQFsNmslsvpQbzuQgHaD0?rs=1&amp;pid=ImgDetMain" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-09-09</div><div class="title">Idea下载安装</div></div></a></div></div></div><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)" style="display: none">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src="/img/basic/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"><div class="author-status"><img class="g-status" src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"></div></div><div class="author-info__description"><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">这有关于<b style="color:#fff">产品、设计、开发</b>相关的问题和看法，还有<b style="color:#fff">文章翻译</b>和<b style="color:#fff">分享</b>。</div><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">相信你可以在这里找到对你有用的<b style="color:#fff">知识</b>和<b style="color:#fff">教程</b>。</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">violet</h1><div class="author-info__desc">生活明朗，万物可爱</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/Violetlx" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/372204786" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git"><span class="toc-number">1.</span> <span class="toc-text">Git</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA-Git-%E8%BF%9C%E7%A8%8B%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%81"><span class="toc-number">1.1.</span> <span class="toc-text">为 Git 远程设置密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE-Git-%E5%AD%98%E5%82%A8%E5%BA%93"><span class="toc-number">1.2.</span> <span class="toc-text">设置 Git 存储库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E6%96%87%E4%BB%B6%E6%B7%BB%E5%8A%A0%E5%88%B0-Git-%E5%B9%B6%E8%B7%9F%E8%B8%AA%E6%9B%B4%E6%94%B9"><span class="toc-number">1.3.</span> <span class="toc-text">将文件添加到 Git 并跟踪更改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E%E8%BF%9C%E7%A8%8B-Git-%E5%AD%98%E5%82%A8%E5%BA%93%E5%90%8C%E6%AD%A5%EF%BC%88%E8%8E%B7%E5%8F%96%E3%80%81%E6%8B%89%E5%8F%96%E3%80%81%E6%9B%B4%E6%96%B0%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">与远程 Git 存储库同步（获取、拉取、更新）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E6%9B%B4%E6%94%B9%E5%B9%B6%E5%B0%86%E5%85%B6%E6%8E%A8%E9%80%81%E5%88%B0-Git-%E5%AD%98%E5%82%A8%E5%BA%93"><span class="toc-number">1.5.</span> <span class="toc-text">提交更改并将其推送到 Git 存储库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.5.1.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9%E7%89%88%E6%9C%AC"><span class="toc-number">1.6.</span> <span class="toc-text">比较文件和文件夹版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E6%9F%A5-Git-%E5%AD%98%E5%82%A8%E5%BA%93%E4%B8%AD%E7%9A%84%E6%9B%B4%E6%94%B9"><span class="toc-number">1.7.</span> <span class="toc-text">调查 Git 存储库中的更改</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/fe850976.html" title="SaToken鉴权框架"><img src="https://picx.zhimg.com/v2-fa9bc3ed9d6f65d08873fc8cd2eec058_720w.jpg?source=172ae18b" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SaToken鉴权框架"></a><div class="content"><a class="title" href="/posts/fe850976.html" title="SaToken鉴权框架">SaToken鉴权框架</a><time datetime="2024-09-27T08:32:20.000Z" title="发表于 2024-09-27 16:32:20">2024-09-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1690d21b.html" title="函数式编程"><img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.I-2ZrXHR3fZtG0pUgdqymQHaEL?rs=1&amp;pid=ImgDetMain" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="函数式编程"></a><div class="content"><a class="title" href="/posts/1690d21b.html" title="函数式编程">函数式编程</a><time datetime="2024-09-27T06:01:27.000Z" title="发表于 2024-09-27 14:01:27">2024-09-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/d06fc5d7.html" title="IDEA 使用 Git 详解(三)"><img src="https://boosterminiclass.com/wp-content/uploads/2023/07/intellij_idea_git_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="IDEA 使用 Git 详解(三)"></a><div class="content"><a class="title" href="/posts/d06fc5d7.html" title="IDEA 使用 Git 详解(三)">IDEA 使用 Git 详解(三)</a><time datetime="2024-09-25T06:45:04.000Z" title="发表于 2024-09-25 14:45:04">2024-09-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ae9ce5fc.html" title="IDEA 使用 Git 详解(二)"><img src="https://boosterminiclass.com/wp-content/uploads/2023/07/intellij_idea_git_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="IDEA 使用 Git 详解(二)"></a><div class="content"><a class="title" href="/posts/ae9ce5fc.html" title="IDEA 使用 Git 详解(二)">IDEA 使用 Git 详解(二)</a><time datetime="2024-09-25T06:45:03.000Z" title="发表于 2024-09-25 14:45:03">2024-09-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7f7493d0.html" title="IDEA 使用 Git 详解(一)"><img src="https://boosterminiclass.com/wp-content/uploads/2023/07/intellij_idea_git_2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="IDEA 使用 Git 详解(一)"></a><div class="content"><a class="title" href="/posts/7f7493d0.html" title="IDEA 使用 Git 详解(一)">IDEA 使用 Git 详解(一)</a><time datetime="2024-09-25T06:45:02.000Z" title="发表于 2024-09-25 14:45:02">2024-09-25</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener" href="https://mail.qq.com/" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://weibo.com/" title="微博"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a><a class="deal_link" href="/atom.xml" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src="https://media.giphy.com/media/zymjdD521GHBu/giphy.gif" size="50px"><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.bilibili.com/" title="Bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.douyin.com/" title="抖音"><i class="anzhiyufont anzhiyu-icon-tiktok"></i></a></div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener" href="https://www.foreverblog.cn/">十年之约</a><a class="footer-item" title="开往" target="_blank" rel="noopener" href="https://github.com/travellings-link/travellings">开往</a></div></div><div class="footer-group"><div class="footer-title">主题</div><div class="footer-links"><a class="footer-item" title="文档" href="/docs/">文档</a><a class="footer-item" title="源码" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu">源码</a><a class="footer-item" title="更新日志" href="/update/">更新日志</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="友链文章" href="/fcircle/">友链文章</a><a class="footer-item" title="留言板" href="/comments/">留言板</a></div></div><div class="footer-group"><div class="footer-title">协议</div><div class="footer-links"><a class="footer-item" title="隐私协议" href="/privacy/">隐私协议</a><a class="footer-item" title="Cookies" href="/cookies/">Cookies</a><a class="footer-item" title="版权协议" href="/copyright/">版权协议</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">©2024 By <a class="footer-bar-link" href="/" title="violet" target="_blank">violet</a></div></div><div id="footer-type-tips"></div><div class="js-pjax"><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      if (true) {
+        const from = '出自 ' + data.from
+        const sub = []
+        sub.unshift(data.hitokoto, from)
+        window.typed = new Typed('#footer-type-tips', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 150,
+          loop: true,
+          backSpeed: 50,
+        })
+      } else {
+        document.getElementById('footer-type-tips').innerHTML = data.hitokoto
+      }
+    })
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://cdn.cbd.int/typed.js@2.1.0/dist/typed.umd.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}
+</script></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://violet.zeabur.app/" title="博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/" title="Github"><img class="back-menu-item-icon" src="https://pic4.zhimg.com/v2-341e1d3b2845db15bceeff70d3fe228b_r.jpg" alt="Github"><span class="back-menu-item-text">Github</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 博文</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 生活</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/shuoshuo/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 分享</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/photos/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/?id=1994908354&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 影视</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/equipment/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 我的装备</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文档</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-book faa-tada" style="font-size: 0.9em;"></i><span> 随机文章</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/document/"><i class="anzhiyufont anzhiyu-icon-book faa-tada" style="font-size: 0.9em;"></i><span> 文档页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/itbaima/"><i class="anzhiyufont anzhiyu-icon-book faa-tada" style="font-size: 0.9em;"></i><span> 柏码</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/runoob/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 菜鸟教程</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/itheima/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 黑马程序员</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/SpringCloudAlibaba/"><i class="anzhiyufont anzhiyu-icon-book faa-tada" style="font-size: 0.9em;"></i><span> 阿里微服务</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友人帐</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友链</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 网站导航</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/front/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 前端</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/back-end/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 后端</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/programmer/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 程序员</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/ai/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> AI</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><span> 关于笔者</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Docker/" style="font-size: 0.88rem; color: rgb(34, 149, 42);">Docker<sup>2</sup></a><a href="/tags/IDEA/" style="font-size: 0.88rem; color: rgb(99, 162, 54);">IDEA<sup>4</sup></a><a href="/tags/Java%E7%A8%8B%E5%BA%8F%E5%91%98/" style="font-size: 0.88rem; color: rgb(81, 16, 76);">Java程序员<sup>3</sup></a><a href="/tags/MybatisPlus/" style="font-size: 0.88rem; color: rgb(158, 158, 18);">MybatisPlus<sup>1</sup></a><a href="/tags/SQL/" style="font-size: 0.88rem; color: rgb(62, 42, 9);">SQL<sup>1</sup></a><a href="/tags/SaToken/" style="font-size: 0.88rem; color: rgb(170, 32, 79);">SaToken<sup>1</sup></a><a href="/tags/VMware/" style="font-size: 0.88rem; color: rgb(193, 39, 95);">VMware<sup>1</sup></a><a href="/tags/VsCode/" style="font-size: 0.88rem; color: rgb(98, 131, 141);">VsCode<sup>1</sup></a><a href="/tags/git/" style="font-size: 0.88rem; color: rgb(171, 86, 57);">git<sup>1</sup></a><a href="/tags/nacos/" style="font-size: 0.88rem; color: rgb(119, 107, 90);">nacos<sup>1</sup></a><a href="/tags/redis/" style="font-size: 0.88rem; color: rgb(164, 109, 34);">redis<sup>1</sup></a></div></div><hr></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button type="button" title="切换背景" onclick="toggleWinbox()"><i class="anzhiyufont anzhiyu-icon-images"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})"><i class="anzhiyufont anzhiyu-icon-arrow-down"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2024 By 安知鱼 V1.6.12",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 violet 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async="" src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async="" data-pjax="" src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script defer="" src="/live2d-widget-master/autoload.js"></script><script src="https://cdn.jsdelivr.net/gh/nextapps-de/winbox/dist/winbox.bundle.min.js"></script><script src="/js/xxx.js?1"></script><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script id="click-show-text" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="true" data-text="富强,民主,文明,和谐,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div><!-- hexo injector body_end start --><script src="https://cdn.jsdelivr.net/npm/hexo-widget-tree@0.2.3/js/index.js"></script><style>#widget-tree-button{opacity:0}</style><div id="widget-tree">
+      <ul>
+      <li class="tree-list-item">
+        <i class="toggle-post-icon gg-folder-add"></i>
+        <a class="tree-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/">
+          程序员
+        </a>
+      <span class="tree-list-count">3</span><ul class="tree-list-children"><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/6ed5eebe.html" title="SpringCloud微服务项目"><i class="post-icon gg-file-document"></i>SpringCloud微服务项目</a></li><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/621998ca.html" title="Java架构师成长路径图"><i class="post-icon gg-file-document"></i>Java架构师成长路径图</a></li><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/1690d21b.html" title="函数式编程"><i class="post-icon gg-file-document"></i>函数式编程</a></li></ul></li>
+      <li class="tree-list-item">
+        <i class="toggle-post-icon gg-folder-add"></i>
+        <a class="tree-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">
+          工具
+        </a>
+      <span class="tree-list-count">6</span><ul class="tree-list-children"><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/7f7493d0.html" title="IDEA 使用 Git 详解(一)"><i class="post-icon gg-file-document"></i>IDEA 使用 Git 详解(一)</a></li><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/ae9ce5fc.html" title="IDEA 使用 Git 详解(二)"><i class="post-icon gg-file-document"></i>IDEA 使用 Git 详解(二)</a></li><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/d06fc5d7.html" title="IDEA 使用 Git 详解(三)"><i class="post-icon gg-file-document"></i>IDEA 使用 Git 详解(三)</a></li><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/97a0a1c6.html" title="Idea下载安装"><i class="post-icon gg-file-document"></i>Idea下载安装</a></li><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/c68db7e6.html" title="VsCode下载安装"><i class="post-icon gg-file-document"></i>VsCode下载安装</a></li><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/545a6120.html" title="VMware"><i class="post-icon gg-file-document"></i>VMware</a></li></ul></li>
+      <li class="tree-list-item">
+        <i class="toggle-post-icon gg-folder-add"></i>
+        <a class="tree-list-link" href="/categories/SpringCloud/">
+          SpringCloud
+        </a>
+      <span class="tree-list-count">3</span><ul class="tree-list-children"><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/f5f9fa9b.html" title="安装Docker"><i class="post-icon gg-file-document"></i>安装Docker</a></li><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/cd988ed5.html" title="Docker使用"><i class="post-icon gg-file-document"></i>Docker使用</a></li><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/8af9e237.html" title="MybatisPlus"><i class="post-icon gg-file-document"></i>MybatisPlus</a></li></ul></li>
+      <li class="tree-list-item">
+        <i class="toggle-post-icon gg-folder-add"></i>
+        <a class="tree-list-link" href="/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+          环境搭建
+        </a>
+      <span class="tree-list-count">4</span><ul class="tree-list-children"><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/f5f9fa9b.html" title="安装Docker"><i class="post-icon gg-file-document"></i>安装Docker</a></li><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/386349fe.html" title="Git 安装与使用"><i class="post-icon gg-file-document"></i>Git 安装与使用</a></li><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/95afb97c.html" title="Nacos 安装与使用"><i class="post-icon gg-file-document"></i>Nacos 安装与使用</a></li><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/6b830637.html" title="Redis安装说明"><i class="post-icon gg-file-document"></i>Redis安装说明</a></li></ul></li>
+      <li class="tree-list-item">
+        <i class="toggle-post-icon gg-folder-add"></i>
+        <a class="tree-list-link" href="/categories/%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/">
+          开发框架
+        </a>
+      <span class="tree-list-count">2</span><ul class="tree-list-children"><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/8af9e237.html" title="MybatisPlus"><i class="post-icon gg-file-document"></i>MybatisPlus</a></li><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/fe850976.html" title="SaToken鉴权框架"><i class="post-icon gg-file-document"></i>SaToken鉴权框架</a></li></ul></li>
+      <li class="tree-list-item">
+        <i class="toggle-post-icon gg-folder-add"></i>
+        <a class="tree-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E6%B3%95/">
+          编程语法
+        </a>
+      <span class="tree-list-count">1</span><ul class="tree-list-children"><li class="tree-list-item"><a class="tree-list-post-link" href="/posts/5d06cb2d.html" title="SQL使用教程"><i class="post-icon gg-file-document"></i>SQL使用教程</a></li></ul></li></ul>
+        <div id="widget-tree-button">
+          <i class="gg-chevron-right"></i>
+        </div>
+      </div><!-- hexo injector body_end end -->
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: true,
+                preloadRatio: 3,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body></html>
