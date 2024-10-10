@@ -2927,6 +2927,9 @@ table {
   border-collapse: collapse;
   empty-cells: show;
 }
+table tr:nth-child(even) {
+  background-color: var(--anzhiyu-secondbg);
+}
 table thead {
   background: var(--anzhiyu-secondbg);
 }
@@ -7653,6 +7656,38 @@ body[data-type="games"] #page .page-title {
   display: flex;
   margin-top: 20px;
 }
+#recent-posts > .recent-post-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 10%;
+  height: 100%;
+  background: rgba(255,255,255,0.5);
+  -webkit-transform: skewX(-20deg);
+  -moz-transform: skewX(-20deg);
+  -o-transform: skewX(-20deg);
+  -ms-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  -ms-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+#recent-posts > .recent-post-item:hover::after {
+  -webkit-animation: move 1s ease forwards;
+  -moz-animation: move 1s ease forwards;
+  -o-animation: move 1s ease forwards;
+  -ms-animation: move 1s ease forwards;
+  animation: move 1s ease forwards;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
 #recent-posts > .recent-post-item .unvisited-post {
   display: -webkit-box;
   display: -moz-box;
@@ -7941,6 +7976,38 @@ body[data-type="games"] #page .page-title {
 }
 #recent-posts > .recent-post-item >.recent-post-info > .content {
   -webkit-line-clamp: 2;
+}
+@-moz-keyframes move {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+@-webkit-keyframes move {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+@-o-keyframes move {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+@keyframes move {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 120%;
+  }
 }
 #topPostGroup {
   display: -webkit-box;
